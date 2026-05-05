@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitalplus Salud y Seguros</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1a6b4a;
+    --verde-claro: #2d9168;
+    --verde-menta: #e8f5ef;
+    --dorado: #c8973a;
+    --dorado-claro: #f5e6c8;
+    --crema: #faf7f2;
+    --texto: #1c2b22;
+    --texto-suave: #4a6355;
+    --blanco: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26, 107, 74, 0.1);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--verde);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--dorado); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--verde); }
+
+  .nav-cta {
+    background: var(--verde);
+    color: var(--blanco) !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--verde-claro) !important; color: var(--blanco) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200, 151, 58, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26, 107, 74, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--dorado-claro);
+    color: var(--dorado);
+    border: 1px solid rgba(200, 151, 58, 0.3);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge::before { content: '✦'; }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--texto);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--verde);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--texto-suave);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--verde);
+    color: var(--blanco);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(26, 107, 74, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--verde-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26, 107, 74, 0.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--verde);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--verde);
+    transition: all 0.25s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--verde-menta);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(26, 107, 74, 0.15);
+  }
+
+  .stat-item {}
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--verde);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+    margin-top: 0.3rem;
+    font-weight: 400;
+  }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero-card {
+    background: var(--blanco);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(26, 107, 74, 0.12), 0 4px 16px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    border-radius: calc(2rem + 3px);
+    background: linear-gradient(135deg, var(--verde), var(--dorado));
+    z-index: -1;
+    opacity: 0.3;
+  }
+
+  .card-icon {
+    width: 56px; height: 56px;
+    background: var(--verde-menta);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-tag {
+    display: inline-block;
+    background: var(--verde-menta);
+    color: var(--verde);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 0.6rem;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+  }
+
+  .card-features li::before {
+    content: '✓';
+    width: 20px; height: 20px;
+    background: var(--verde);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .price-desde { font-size: 0.8rem; color: var(--texto-suave); }
+  .price-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--verde);
+  }
+  .price-mes { font-size: 0.8rem; color: var(--texto-suave); }
+
+  .card-btn {
+    display: block;
+    text-align: center;
+    background: var(--verde);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .card-btn:hover { background: var(--verde-claro); }
+
+  .floating-badge {
+    position: absolute;
+    top: -12px; right: 20px;
+    background: var(--dorado);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+  }
+
+  /* SECTION BASE */
+  section { padding: 6rem 4rem; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--verde);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dorado);
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--texto);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  h2 em { font-style: italic; color: var(--verde); }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--texto-suave);
+    line-height: 1.7;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* COMO FUNCIONA */
+  .como-funciona {
+    background: var(--verde);
+    color: white;
+    border-radius: 2.5rem;
+    margin: 0 2rem;
+    padding: 5rem 4rem;
+  }
+
+  .como-funciona .section-label { color: var(--dorado-claro); }
+  .como-funciona .section-label::before { background: var(--dorado); }
+  .como-funciona h2 { color: white; }
+  .como-funciona h2 em { color: var(--dorado-claro); }
+  .como-funciona .section-sub { color: rgba(255,255,255,0.75); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(16.67% + 28px);
+    right: calc(16.67% + 28px);
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dorado-claro);
+  }
+
+  .step-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .step-desc {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+
+  /* PLANES */
+  .planes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .plan-card {
+    background: var(--blanco);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plan-card:hover {
+    border-color: var(--verde);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(26, 107, 74, 0.15);
+  }
+
+  .plan-card.featured {
+    border-color: var(--verde);
+    box-shadow: 0 12px 40px rgba(26, 107, 74, 0.2);
+  }
+
+  .plan-card.featured::before {
+    content: 'MÁS POPULAR';
+    position: absolute;
+    top: 1.2rem; right: -2.5rem;
+    background: var(--dorado);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.3rem 3rem;
+    letter-spacing: 0.08em;
+    transform: rotate(35deg);
+  }
+
+  .plan-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .plan-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 0.4rem;
+  }
+
+  .plan-target {
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+    margin-bottom: 1.2rem;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--verde-menta);
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+  }
+
+  .plan-features li span { color: var(--verde); font-weight: 700; }
+
+  .plan-cta {
+    display: block;
+    text-align: center;
+    background: var(--verde-menta);
+    color: var(--verde);
+    padding: 0.7rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+  }
+
+  .plan-card.featured .plan-cta {
+    background: var(--verde);
+    color: white;
+  }
+
+  .plan-cta:hover { opacity: 0.85; }
+
+  /* TESTIMONIOS */
+  .testimonios {
+    background: var(--verde-menta);
+    border-radius: 2.5rem;
+    margin: 0 2rem;
+    padding: 5rem 4rem;
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testimonio-card {
+    background: white;
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    box-shadow: 0 4px 20px rgba(26, 107, 74, 0.06);
+  }
+
+  .stars {
+    color: var(--dorado);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .testimonio-text {
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .testimonio-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .author-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--texto);
+  }
+
+  .author-desc {
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+  }
+
+  /* NOSOTROS */
+  .nosotros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .nosotros-visual {
+    position: relative;
+  }
+
+  .nosotros-img-placeholder {
+    background: linear-gradient(135deg, var(--verde-menta) 0%, rgba(26,107,74,0.15) 100%);
+    border-radius: 2rem;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nosotros-img-placeholder::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(26,107,74,0.1), transparent);
+  }
+
+  .nosotros-stat {
+    position: absolute;
+    bottom: -1.5rem; right: -1.5rem;
+    background: white;
+    border-radius: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .nosotros-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--verde);
+    line-height: 1;
+  }
+
+  .nosotros-stat-label {
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+    margin-top: 0.3rem;
+  }
+
+  .valores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .valor-item {
+    background: var(--verde-menta);
+    border-radius: 1rem;
+    padding: 1.2rem;
+  }
+
+  .valor-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .valor-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto);
+    margin-bottom: 0.3rem;
+  }
+  .valor-desc { font-size: 0.8rem; color: var(--texto-suave); line-height: 1.5; }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: linear-gradient(135deg, var(--verde) 0%, #0f4a32 100%);
+    border-radius: 2.5rem;
+    margin: 0 2rem;
+    padding: 5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,151,58,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cta-final h2 { color: white; max-width: 600px; margin: 0 auto 1rem; }
+  .cta-final h2 em { color: var(--dorado-claro); }
+  .cta-final p { color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; font-size: 1.05rem; }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--verde);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+  .btn-outline-white {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+  /* FOOTER */
+  footer {
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    border-top: 1px solid rgba(26,107,74,0.1);
+    margin-top: 4rem;
+  }
+
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--verde);
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo span { color: var(--dorado); }
+
+  .footer-desc {
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .social-link {
+    width: 38px; height: 38px;
+    background: var(--verde-menta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .social-link:hover { background: var(--verde); }
+
+  .footer-col h4 {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--verde); }
+
+  .footer-bottom {
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(26,107,74,0.08);
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+  }
+
+  /* WHATSAPP FLOTANTE */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px; height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.6rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.2s;
+    animation: pulse 2s infinite;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    animation: none;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(26,107,74,0.2), transparent);
+    margin: 0 4rem;
+  }
+
+  /* RESPONSIVE HINTS */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; }
+    .hero-visual { display: none; }
+    section { padding: 4rem 2rem; }
+    .planes-grid, .steps, .testimonios-grid { grid-template-columns: 1fr; }
+    .nosotros { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .como-funciona, .testimonios, .cta-final { margin: 0 1rem; padding: 3rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Vitalplus <span>Salud</span></div>
+  <ul class="nav-links">
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="https://wa.me/573160277642" class="nav-cta">Cotizar ahora →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Corredora autorizada MedPlus Salud</div>
+    <h1>Tu salud merece<br><em>el mejor plan,</em><br>no el más caro</h1>
+    <p class="hero-sub">
+      Te ayudamos a encontrar el plan de medicina prepagada ideal para ti, tu familia o tu empresa. Asesoría personalizada, sin costo y sin complicaciones.
+    </p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/573160277642" class="btn-primary">📲 Cotiza gratis por WhatsApp</a>
+      <a href="#planes" class="btn-secondary">Ver planes →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">9+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Familias asesoradas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Asesoría gratuita</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="floating-badge">⭐ Recomendado</div>
+      <div class="card-icon">🏥</div>
+      <div class="card-tag">Plan Familia</div>
+      <div class="card-title">MedPlus Esencial</div>
+      <p class="card-desc">Cobertura completa para toda tu familia con acceso a más de 500 médicos especialistas.</p>
+      <ul class="card-features">
+        <li>Consultas ilimitadas</li>
+        <li>Hospitalización y cirugías</li>
+        <li>Medicamentos incluidos</li>
+        <li>Urgencias 24/7</li>
+      </ul>
+      <div class="card-price">
+        <span class="price-desde">Desde</span>
+        <span class="price-num">$189.000</span>
+        <span class="price-mes">/mes</span>
+      </div>
+      <a href="https://wa.me/573160277642" class="card-btn">Cotizar este plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<div class="como-funciona">
+  <div class="section-label">Proceso simple</div>
+  <h2>En 3 pasos tienes tu <em>plan ideal</em></h2>
+  <p class="section-sub">Sin papeleo, sin filas. Te acompañamos en todo el proceso de principio a fin.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Nos cuentas tu situación</div>
+      <p class="step-desc">Ya sea para ti solo, tu familia o tus empleados, analizamos tus necesidades reales y tu presupuesto.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Recibís opciones claras</div>
+      <p class="step-desc">Te presentamos los planes de MedPlus que mejor se adaptan, con comparación honesta de coberturas y precios.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Quedás cubierto y tranquilo</div>
+      <p class="step-desc">Gestionamos todo el proceso de afiliación. Y seguimos contigo después, cuando lo necesites.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PLANES -->
+<section id="planes" style="padding: 6rem 4rem;">
+  <div class="section-label">Nuestros planes</div>
+  <h2>Soluciones para <em>cada etapa</em> de tu vida</h2>
+  <p class="section-sub">Todos los planes son de MedPlus Salud, una de las mejores redes de medicina prepagada del país.</p>
+
+  <div class="planes-grid">
+    <div class="plan-card">
+      <div class="plan-icon">👤</div>
+      <div class="plan-name">Plan Individual</div>
+      <p class="plan-target">Para personas independientes y profesionales</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Medicina general y especialistas</li>
+        <li><span>✓</span> Exámenes de laboratorio</li>
+        <li><span>✓</span> Urgencias y hospitalización</li>
+        <li><span>✓</span> App de telemedicina</li>
+      </ul>
+      <a href="https://wa.me/573160277642" class="plan-cta">Cotizar este plan</a>
+    </div>
+
+    <div class="plan-card featured">
+      <div class="plan-icon">👨‍👩‍👧‍👦</div>
+      <div class="plan-name">Plan Familiar</div>
+      <p class="plan-target">Para familias de 2 a 6 personas</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Todo lo del plan individual</li>
+        <li><span>✓</span> Cobertura para hijos hasta 25 años</li>
+        <li><span>✓</span> Maternidad y pediatría</li>
+        <li><span>✓</span> Descuentos por grupo familiar</li>
+      </ul>
+      <a href="https://wa.me/573160277642" class="plan-cta">Cotizar este plan</a>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-icon">🏢</div>
+      <div class="plan-name">Plan Empresarial</div>
+      <p class="plan-target">Para empresas y equipos de trabajo</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Cobertura colectiva flexible</li>
+        <li><span>✓</span> Gestión centralizada</li>
+        <li><span>✓</span> Tarifas preferenciales por volumen</li>
+        <li><span>✓</span> Reporte de uso para RRHH</li>
+      </ul>
+      <a href="https://wa.me/573160277642" class="plan-cta">Cotizar este plan</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NOSOTROS -->
+<section id="nosotros" style="padding: 6rem 4rem;">
+  <div class="nosotros">
+    <div class="nosotros-visual">
+      <div class="nosotros-img-placeholder">🌿</div>
+      <div class="nosotros-stat">
+        <div class="nosotros-stat-num">9</div>
+        <div class="nosotros-stat-label">años cuidando<br>tu salud</div>
+      </div>
+    </div>
+    <div class="nosotros-content">
+      <div class="section-label">Quiénes somos</div>
+      <h2>Una persona,<br><em>un compromiso</em> real</h2>
+      <p style="color: var(--texto-suave); font-size: 1rem; line-height: 1.7; margin: 1.5rem 0; font-weight: 300;">
+        En Vitalplus Salud y Seguros no somos un call center ni una empresa impersonal. Somos una asesora dedicada con más de 9 años de experiencia en el sector salud, que se toma el tiempo de entender tu situación antes de recomendarte cualquier plan.
+      </p>
+      <p style="color: var(--texto-suave); font-size: 1rem; line-height: 1.7; margin-bottom: 2rem; font-weight: 300;">
+        Nuestra relación no termina con la venta. Estamos aquí para resolver tus dudas, ayudarte a usar tu plan y acompañarte cuando más lo necesitas.
+      </p>
+      <div class="valores-grid">
+        <div class="valor-item">
+          <div class="valor-icon">🤝</div>
+          <div class="valor-title">Honestidad</div>
+          <p class="valor-desc">Te decimos exactamente qué cubre y qué no, sin letras pequeñas.</p>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">💡</div>
+          <div class="valor-title">Asesoría real</div>
+          <p class="valor-desc">Escuchamos primero. Recomendamos después.</p>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">📞</div>
+          <div class="valor-title">Siempre disponible</div>
+          <p class="valor-desc">Un número de WhatsApp, respuesta de verdad.</p>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🏅</div>
+          <div class="valor-title">Experiencia</div>
+          <p class="valor-desc">9 años en el sector, cientos de familias asesoradas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<div class="testimonios" id="testimonios">
+  <div class="section-label">Lo que dicen nuestros clientes</div>
+  <h2>Historias reales de <em>familias felices</em></h2>
+  <p class="section-sub">Más de 500 familias confían en Vitalplus. Estas son algunas de sus experiencias.</p>
+
+  <div class="testimonios-grid">
+    <div class="testimonio-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"Me explicó cada detalle del plan con paciencia. Nunca sentí que me estaban vendiendo, sino que me estaban asesorando de verdad. Mi familia lleva 2 años con MedPlus y estamos felices."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar" style="background: var(--verde);">MC</div>
+        <div>
+          <div class="author-name">María C.</div>
+          <div class="author-desc">Mamá de 3 hijos, Bogotá</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonio-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"Tenía muchas dudas sobre medicina prepagada y cuánto costaba. Me ayudó a entender todo y encontré un plan que se ajustaba perfecto a mi presupuesto como independiente."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar" style="background: var(--dorado);">JR</div>
+        <div>
+          <div class="author-name">Julián R.</div>
+          <div class="author-desc">Freelancer, Medellín</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonio-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"Contraté el plan para todos mis empleados. El proceso fue muy ágil y el precio para el grupo fue excelente. Lo recomiendo para cualquier empresa pequeña."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar" style="background: #3d7a5f;">AP</div>
+        <div>
+          <div class="author-name">Adriana P.</div>
+          <div class="author-desc">Empresaria, Cali</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<section style="padding: 5rem 2rem;">
+  <div class="cta-final">
+    <div class="section-label" style="color: var(--dorado-claro); justify-content: center;">
+      <span style="display:block;width:24px;height:2px;background:var(--dorado)"></span>
+      Empieza hoy
+    </div>
+    <h2>¿Listo para proteger<br>lo que <em>más te importa?</em></h2>
+    <p>Una conversación de 10 minutos puede cambiarte la vida. Sin compromisos, sin costo, sin presión.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/573160277642" class="btn-white">📲 Escribir por WhatsApp</a>
+      <a href="tel:+573160277642" class="btn-outline-white">📞 Llamar ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Vitalplus <span>Salud</span></div>
+    <p class="footer-desc">Corredora autorizada de medicina prepagada MedPlus. Asesoría personalizada para personas, familias y empresas en toda Colombia.</p>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=61572511583555" class="social-link">f</a>
+      <a href="https://www.instagram.com/vitalpsaludyseguros/" class="social-link">📷</a>
+      <a href="https://wa.me/573160277642" class="social-link">💬</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Planes</h4>
+    <ul>
+      <li><a href="#">Plan Individual</a></li>
+      <li><a href="#">Plan Familiar</a></li>
+      <li><a href="#">Plan Empresarial</a></li>
+      <li><a href="#">¿Cuál es para mí?</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Empresa</h4>
+    <ul>
+      <li><a href="#">Quiénes somos</a></li>
+      <li><a href="#">Testimonios</a></li>
+      <li><a href="#">Blog de salud</a></li>
+      <li><a href="#">Preguntas frecuentes</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contacto</h4>
+    <ul>
+      <li><a href="tel:+573160277642">+57 316 027-7642</a></li>
+      <li><a href="tel:+573134032142">+57 313 403-2142</a></li>
+      <li><a href="https://wa.me/573160277642">WhatsApp</a></li>
+      <li><a href="#">Lun–Vie, 9am–5pm</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <span>© 2026 Vitalplus Salud y Seguros — Todos los derechos reservados</span>
+  <span>Corredora autorizada MedPlus Salud · Colombia</span>
+</div>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/573160277642" class="whatsapp-float" title="Escríbenos por WhatsApp">💬</a>
+
+</body>
+</html>
