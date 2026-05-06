@@ -40,9 +40,28 @@
   .nav-logo .logo-vital { color:var(--azul); }
   .nav-logo .logo-plus { color:var(--verde); }
   .nav-logo .logo-salud { color:var(--texto-suave); font-weight:400; }
-  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
   .nav-links a { text-decoration:none; color:var(--texto-suave); font-size:0.88rem; font-weight:500; transition:color 0.2s; }
   .nav-links a:hover { color:var(--verde); }
+
+  /* Dropdown */
+  .nav-dropdown { position:relative; }
+  .nav-dropdown > a { display:flex; align-items:center; gap:0.3rem; cursor:pointer; }
+  .nav-dropdown > a::after { content:'▾'; font-size:0.7rem; transition:transform 0.2s; }
+  .nav-dropdown:hover > a::after { transform:rotate(180deg); }
+  .dropdown-menu {
+    display:none; position:absolute; top:calc(100% + 0.8rem); left:50%; transform:translateX(-50%);
+    background:white; border-radius:1rem; padding:0.6rem;
+    box-shadow:0 8px 30px rgba(20,100,180,0.15); border:1px solid rgba(20,100,180,0.08);
+    min-width:220px; z-index:200;
+  }
+  .nav-dropdown:hover .dropdown-menu { display:flex; flex-direction:column; }
+  .dropdown-menu a {
+    padding:0.6rem 0.9rem; border-radius:0.6rem; font-size:0.85rem;
+    color:var(--texto-suave) !important; white-space:nowrap;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+  .dropdown-menu a:hover { background:var(--crema); color:var(--azul) !important; }
   .nav-cta { background:var(--verde) !important; color:var(--blanco) !important; padding:0.5rem 1.2rem; border-radius:50px; font-weight:600 !important; }
   .nav-cta:hover { background:var(--verde-claro) !important; }
 
@@ -315,7 +334,7 @@
   .btn-outline-white:hover { background:rgba(255,255,255,0.1); }
 
   /* ── FOOTER ── */
-  footer { padding:4rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; border-top:1px solid rgba(26,107,74,0.1); margin-top:2rem; }
+  footer { padding:4rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2rem; border-top:1px solid rgba(26,107,74,0.1); margin-top:2rem; }
   .footer-logo { font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--verde); margin-bottom:1rem; }
   .footer-logo span { color:var(--dorado); }
   .footer-desc { font-size:0.85rem; color:var(--texto-suave); line-height:1.7; margin-bottom:1.5rem; }
@@ -343,6 +362,10 @@
     .nav-links { display:none; }
     .nav-hamburger { display:flex; }
     .hero { grid-template-columns:1fr; padding:6rem 1.5rem 3rem; }
+    .nosotros { grid-template-columns:1fr; }
+    section > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; gap:2rem !important; }
+    div[style*="grid-template-columns:repeat(5,1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
+    div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
     .hero-visual { display:none; }
     section { padding:4rem 1.5rem; }
     .beneficios-grid,.steps,.testimonios-grid { grid-template-columns:1fr; }
@@ -363,6 +386,15 @@
   <ul class="nav-links">
     <li><a href="#planes">Planes MedPlus</a></li>
     <li><a href="#quiz">¿Cuál es para mí?</a></li>
+    <li class="nav-dropdown">
+      <a>Servicios</a>
+      <div class="dropdown-menu">
+        <a href="https://medplus.com.co/chequeo-medico-ejecutivo/" target="_blank">🩺 Chequeo Médico Ejecutivo</a>
+        <a href="https://medplus.com.co/convenios/" target="_blank">🎁 Convenios MedPlus</a>
+        <a href="https://web.medplus.net.co/sucursal_web/auth" target="_blank">🖥️ Oficina Virtual afiliados</a>
+        <a href="https://medplus.com.co/planes-de-medicina-prepagada/" target="_blank">📋 Ver planes en MedPlus</a>
+      </div>
+    </li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#testimonios">Testimonios</a></li>
     <li><a href="https://wa.me/573160277642" class="nav-cta">Cotizar gratis →</a></li>
@@ -376,6 +408,9 @@
 <div class="nav-mobile" id="nav-mobile">
   <a href="#planes" onclick="closeMobileMenu()">Planes MedPlus</a>
   <a href="#quiz" onclick="closeMobileMenu()">¿Cuál plan es para mí?</a>
+  <a href="https://medplus.com.co/chequeo-medico-ejecutivo/" target="_blank" onclick="closeMobileMenu()">🩺 Chequeo Médico Ejecutivo</a>
+  <a href="https://medplus.com.co/convenios/" target="_blank" onclick="closeMobileMenu()">🎁 Convenios MedPlus</a>
+  <a href="https://web.medplus.net.co/sucursal_web/auth" target="_blank" onclick="closeMobileMenu()">🖥️ Oficina Virtual</a>
   <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
   <a href="#testimonios" onclick="closeMobileMenu()">Testimonios</a>
   <a href="https://wa.me/573160277642" class="nav-cta-mobile" onclick="closeMobileMenu()">📲 Cotizar gratis</a>
@@ -733,6 +768,119 @@
 
 <div class="divider"></div>
 
+<!-- CHEQUEO EJECUTIVO -->
+<section style="padding:3.5rem 3rem;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+    <div>
+      <div class="section-label">Servicio adicional MedPlus</div>
+      <h2>Chequeo Médico <em>Ejecutivo</em></h2>
+      <p style="color:var(--texto-suave);font-size:1rem;line-height:1.7;margin:1.2rem 0;font-weight:300;">
+        Un chequeo médico ejecutivo te permite conocer el estado real de tu salud, identificar factores de riesgo a tiempo y diseñar estrategias de control para una vida más larga y de mejor calidad.
+      </p>
+      <p style="color:var(--texto-suave);font-size:1rem;line-height:1.7;margin-bottom:1.8rem;font-weight:300;">
+        Es un servicio disponible para personas y empresas, independientemente del plan que tengas. MedPlus ofrece este portafolio especializado con atención de alto nivel.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Chequeo%20Médico%20Ejecutivo%20de%20MedPlus" class="btn-primary" style="font-size:0.9rem;">📲 Solicitar información</a>
+        <a href="https://medplus.com.co/wp-content/uploads/2025/01/CHEQUEO-EJECUTIVO.pdf" target="_blank" class="btn-secondary" style="font-size:0.9rem;">📄 Ver portafolio</a>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="background:var(--blanco);border-radius:1.2rem;padding:1.4rem;box-shadow:0 4px 20px rgba(20,100,180,0.08);">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">🩺</div>
+        <div style="font-weight:600;font-size:0.9rem;color:var(--texto);margin-bottom:0.3rem;">Evaluación integral</div>
+        <p style="font-size:0.8rem;color:var(--texto-suave);line-height:1.5;">Valoración médica completa con especialistas de alto nivel.</p>
+      </div>
+      <div style="background:var(--blanco);border-radius:1.2rem;padding:1.4rem;box-shadow:0 4px 20px rgba(20,100,180,0.08);">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">🔬</div>
+        <div style="font-weight:600;font-size:0.9rem;color:var(--texto);margin-bottom:0.3rem;">Laboratorio completo</div>
+        <p style="font-size:0.8rem;color:var(--texto-suave);line-height:1.5;">Análisis clínicos e imágenes diagnósticas incluidas.</p>
+      </div>
+      <div style="background:var(--blanco);border-radius:1.2rem;padding:1.4rem;box-shadow:0 4px 20px rgba(20,100,180,0.08);">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">📋</div>
+        <div style="font-weight:600;font-size:0.9rem;color:var(--texto);margin-bottom:0.3rem;">Plan de acción</div>
+        <p style="font-size:0.8rem;color:var(--texto-suave);line-height:1.5;">Estrategias personalizadas para tu control y bienestar.</p>
+      </div>
+      <div style="background:var(--azul);border-radius:1.2rem;padding:1.4rem;">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">🏢</div>
+        <div style="font-weight:600;font-size:0.9rem;color:white;margin-bottom:0.3rem;">Ideal para empresas</div>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.8);line-height:1.5;">Cuida la salud de tus ejecutivos y equipo clave.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONVENIOS -->
+<section style="padding:3.5rem 3rem;">
+  <div class="section-label">Beneficio exclusivo para afiliados</div>
+  <h2>Convenios MedPlus — <em>más que salud</em></h2>
+  <p class="section-sub">Al afiliarte con MedPlus accedes a descuentos y beneficios en una red de aliados a nivel nacional.</p>
+
+  <div style="margin-top:2rem;">
+    <div style="font-size:0.78rem;font-weight:600;color:var(--texto-suave);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">📍 Bogotá</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:2rem;">
+      <a href="https://gastronomymkt.com/" target="_blank" style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;text-decoration:none;box-shadow:0 2px 12px rgba(20,100,180,0.08);transition:all 0.2s;border:1.5px solid transparent;" onmouseover="this.style.borderColor='var(--azul)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🍽️</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">Gastronomy Market</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Gastronomía</div>
+      </a>
+      <a href="http://totalrelaxyoga.com/" target="_blank" style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;text-decoration:none;box-shadow:0 2px 12px rgba(20,100,180,0.08);transition:all 0.2s;border:1.5px solid transparent;" onmouseover="this.style.borderColor='var(--azul)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🧘</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">Total Relax Yoga</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Bienestar</div>
+      </a>
+      <a href="http://www.my-symphony.com/" target="_blank" style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;text-decoration:none;box-shadow:0 2px 12px rgba(20,100,180,0.08);transition:all 0.2s;border:1.5px solid transparent;" onmouseover="this.style.borderColor='var(--azul)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🎵</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">My Symphony</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Música</div>
+      </a>
+      <a href="https://www.maternityclubspagym.com/" target="_blank" style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;text-decoration:none;box-shadow:0 2px 12px rgba(20,100,180,0.08);transition:all 0.2s;border:1.5px solid transparent;" onmouseover="this.style.borderColor='var(--azul)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🤰</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">Maternity Spa</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Maternidad</div>
+      </a>
+      <a href="https://www.coliseomedplus.com/" target="_blank" style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;text-decoration:none;box-shadow:0 2px 12px rgba(20,100,180,0.08);transition:all 0.2s;border:1.5px solid transparent;" onmouseover="this.style.borderColor='var(--azul)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🏟️</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">Coliseo MedPlus</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Entretenimiento</div>
+      </a>
+    </div>
+
+    <div style="font-size:0.78rem;font-weight:600;color:var(--texto-suave);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">🇨🇴 Nacional</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <a href="https://wa.link/patdvq" target="_blank" style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;text-decoration:none;box-shadow:0 2px 12px rgba(20,100,180,0.08);transition:all 0.2s;border:1.5px solid transparent;" onmouseover="this.style.borderColor='var(--azul)'" onmouseout="this.style.borderColor='transparent'">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">💊</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">Medicina Regenerativa</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Salud avanzada</div>
+      </a>
+      <div style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;box-shadow:0 2px 12px rgba(20,100,180,0.08);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🧬</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">America Cell Bank</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Banco de células</div>
+      </div>
+      <div style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;box-shadow:0 2px 12px rgba(20,100,180,0.08);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">💪</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">Bodytech</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Gimnasio</div>
+      </div>
+      <div style="background:white;border-radius:1rem;padding:1.2rem;text-align:center;box-shadow:0 2px 12px rgba(20,100,180,0.08);">
+        <div style="font-size:1.6rem;margin-bottom:0.5rem;">🐾</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--texto);">PetPlus Clínica</div>
+        <div style="font-size:0.72rem;color:var(--texto-suave);margin-top:0.2rem;">Veterinaria</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.5rem;background:var(--dorado-claro);border-radius:0.8rem;display:inline-flex;align-items:center;gap:0.8rem;">
+    <span style="font-size:1.2rem;">ℹ️</span>
+    <span style="font-size:0.85rem;color:var(--azul-oscuro);">Los convenios son exclusivos para afiliados MedPlus. <a href="https://medplus.com.co/convenios/" target="_blank" style="color:var(--azul);font-weight:600;">Ver todos los convenios →</a></span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- QUIZ -->
 <section id="quiz" style="padding:3rem 2rem;">
   <div class="quiz-section">
@@ -759,7 +907,7 @@
           </div>
         </div>
         <div class="quiz-nav">
-          <button class="quiz-btn quiz-btn-primary" onclick="nextStep(2)">Siguiente →</button>
+          <button class="quiz-btn quiz-btn-primary" onclick="nextStepValidated(2, 'q1')">Siguiente →</button>
           <div class="quiz-progress">
             <div class="quiz-dot active"></div>
             <div class="quiz-dot"></div>
@@ -787,7 +935,7 @@
         </div>
         <div class="quiz-nav">
           <button class="quiz-btn quiz-btn-secondary" onclick="prevStep(1)">← Atrás</button>
-          <button class="quiz-btn quiz-btn-primary" onclick="nextStep(3)">Siguiente →</button>
+          <button class="quiz-btn quiz-btn-primary" onclick="nextStepValidated(3, 'q2')">Siguiente →</button>
           <div class="quiz-progress">
             <div class="quiz-dot active"></div>
             <div class="quiz-dot active"></div>
@@ -815,7 +963,7 @@
         </div>
         <div class="quiz-nav">
           <button class="quiz-btn quiz-btn-secondary" onclick="prevStep(2)">← Atrás</button>
-          <button class="quiz-btn quiz-btn-primary" onclick="showResult()">Ver mi plan ideal ✨</button>
+          <button class="quiz-btn quiz-btn-primary" onclick="showResultValidated()">Ver mi plan ideal ✨</button>
           <div class="quiz-progress">
             <div class="quiz-dot active"></div>
             <div class="quiz-dot active"></div>
@@ -842,7 +990,12 @@
 <section id="nosotros">
   <div class="nosotros">
     <div class="nosotros-visual">
-      <div class="nosotros-img-placeholder">🌿</div>
+      <div style="border-radius:2rem;overflow:hidden;aspect-ratio:4/3;position:relative;">
+  <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&fit=crop" 
+       alt="Asesoría médica personalizada" 
+       style="width:100%;height:100%;object-fit:cover;display:block;"
+       onerror="this.parentElement.innerHTML='<div class=nosotros-img-placeholder style=border-radius:2rem>🏥</div>'">
+</div>
       <div class="nosotros-stat">
         <div class="nosotros-stat-num">9+</div>
         <div class="nosotros-stat-label">años cuidando<br>tu salud</div>
@@ -916,6 +1069,59 @@
   </div>
 </div>
 
+<!-- OFICINA VIRTUAL -->
+<section style="padding:3.5rem 3rem;">
+  <div style="background:var(--blanco);border-radius:2rem;padding:3rem;box-shadow:0 8px 40px rgba(20,100,180,0.08);display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+    <div>
+      <div class="section-label">Para afiliados actuales</div>
+      <h2>Tu <em>Oficina Virtual</em> MedPlus</h2>
+      <p style="color:var(--texto-suave);font-size:1rem;line-height:1.7;margin:1.2rem 0;font-weight:300;">
+        ¿Ya eres afiliado MedPlus? Accede a tu oficina virtual para gestionar tu plan, descargar certificados, consultar autorizaciones y mucho más — sin filas, sin llamadas.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.8rem;">
+        <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.88rem;color:var(--texto-suave);">
+          <span style="color:var(--verde);font-weight:700;">✓</span> Descarga de certificados y paz y salvo
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.88rem;color:var(--texto-suave);">
+          <span style="color:var(--verde);font-weight:700;">✓</span> Consulta y gestión de autorizaciones
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.88rem;color:var(--texto-suave);">
+          <span style="color:var(--verde);font-weight:700;">✓</span> Historial de servicios utilizados
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.88rem;color:var(--texto-suave);">
+          <span style="color:var(--verde);font-weight:700;">✓</span> Actualización de datos personales
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.88rem;color:var(--texto-suave);">
+          <span style="color:var(--verde);font-weight:700;">✓</span> Acceso 24/7 desde cualquier dispositivo
+        </div>
+      </div>
+      <a href="https://web.medplus.net.co/sucursal_web/auth" target="_blank" class="btn-primary" style="font-size:0.9rem;">🖥️ Ir a la Oficina Virtual</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="background:var(--crema);border-radius:1.2rem;padding:1.4rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">📄</div>
+        <div style="font-weight:600;font-size:0.85rem;color:var(--texto);margin-bottom:0.3rem;">Certificados</div>
+        <p style="font-size:0.78rem;color:var(--texto-suave);line-height:1.5;">Descarga tus certificaciones al instante</p>
+      </div>
+      <div style="background:var(--crema);border-radius:1.2rem;padding:1.4rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">✅</div>
+        <div style="font-weight:600;font-size:0.85rem;color:var(--texto);margin-bottom:0.3rem;">Autorizaciones</div>
+        <p style="font-size:0.78rem;color:var(--texto-suave);line-height:1.5;">Consulta el estado de tus solicitudes</p>
+      </div>
+      <div style="background:var(--crema);border-radius:1.2rem;padding:1.4rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">📊</div>
+        <div style="font-weight:600;font-size:0.85rem;color:var(--texto);margin-bottom:0.3rem;">Historial</div>
+        <p style="font-size:0.78rem;color:var(--texto-suave);line-height:1.5;">Revisa todos tus servicios utilizados</p>
+      </div>
+      <div style="background:var(--azul);border-radius:1.2rem;padding:1.4rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">🔒</div>
+        <div style="font-weight:600;font-size:0.85rem;color:white;margin-bottom:0.3rem;">Seguro y privado</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.8);line-height:1.5;">Tu información siempre protegida</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA FINAL -->
 <section style="padding:3rem 2rem;">
   <div class="cta-final">
@@ -966,6 +1172,14 @@
       <li><a href="#nosotros">Quiénes somos</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#quiz">¿Cuál plan es para mí?</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Servicios adicionales</h4>
+    <ul>
+      <li><a href="https://medplus.com.co/chequeo-medico-ejecutivo/" target="_blank">Chequeo Médico Ejecutivo</a></li>
+      <li><a href="https://medplus.com.co/convenios/" target="_blank">Convenios MedPlus</a></li>
+      <li><a href="https://web.medplus.net.co/sucursal_web/auth" target="_blank">Oficina Virtual afiliados</a></li>
       <li><a href="https://medplus.com.co/planes-de-medicina-prepagada/" target="_blank">Ver planes en MedPlus →</a></li>
     </ul>
   </div>
@@ -976,7 +1190,7 @@
       <li><a href="tel:+573134032142">+57 313 403-2142</a></li>
       <li><a href="tel:+573002628102">+57 300 262-8102</a></li>
       <li><a href="https://wa.me/573160277642">WhatsApp</a></li>
-      <li><a href="#">Lun–Vie, 9am–5pm</a></li>
+      <li style="font-size:0.83rem;color:var(--texto-suave);">Lun–Vie, 9am–5pm</li>
     </ul>
   </div>
 </footer>
@@ -997,6 +1211,31 @@
   function closeMobileMenu() {
     document.querySelector('.nav-hamburger').classList.remove('open');
     document.getElementById('nav-mobile').classList.remove('open');
+  }
+
+  // ── QUIZ VALIDATION ──
+  function nextStepValidated(step, question) {
+    if (!answers[question]) {
+      const opts = document.querySelectorAll('#qstep-' + (step-1) + ' .quiz-option');
+      opts.forEach(o => {
+        o.style.borderColor = 'rgba(255,80,80,0.6)';
+        setTimeout(() => o.style.borderColor = '', 1200);
+      });
+      return;
+    }
+    nextStep(step);
+  }
+
+  function showResultValidated() {
+    if (!answers['q3']) {
+      const opts = document.querySelectorAll('#qstep-3 .quiz-option');
+      opts.forEach(o => {
+        o.style.borderColor = 'rgba(255,80,80,0.6)';
+        setTimeout(() => o.style.borderColor = '', 1200);
+      });
+      return;
+    }
+    showResult();
   }
 
   // ── PLANES TABS ──
