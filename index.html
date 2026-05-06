@@ -69,7 +69,7 @@
     min-height: 100vh;
     display: grid; grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 7rem 4rem 4rem;
+    padding: 5rem 3rem 3rem;
     position: relative; overflow: hidden;
   }
   .hero::before {
@@ -114,7 +114,7 @@
     border:2px solid var(--verde); transition:all 0.25s;
   }
   .btn-secondary:hover { background:var(--verde-menta); transform:translateY(-2px); }
-  .hero-stats { display:flex; gap:2.5rem; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(26,107,74,0.15); }
+  .hero-stats { display:flex; gap:2.5rem; margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(26,107,74,0.15); }
   .stat-number { font-family:'Fraunces',serif; font-size:2rem; font-weight:700; color:var(--verde); line-height:1; }
   .stat-label { font-size:0.78rem; color:var(--texto-suave); margin-top:0.3rem; }
 
@@ -143,7 +143,7 @@
   .card-btn:hover { background:var(--verde-claro); }
 
   /* ── SECTIONS ── */
-  section { padding:6rem 4rem; }
+  section { padding:4rem 3rem; }
   .section-label { display:inline-flex; align-items:center; gap:0.5rem; color:var(--verde); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem; }
   .section-label::before { content:''; display:block; width:24px; height:2px; background:var(--dorado); }
   h2 { font-family:'Fraunces',serif; font-size:clamp(1.9rem,3.5vw,2.7rem); font-weight:600; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; }
@@ -152,13 +152,13 @@
   .divider { height:1px; background:linear-gradient(to right,transparent,rgba(26,107,74,0.2),transparent); margin:0 4rem; }
 
   /* ── BENEFICIOS MEDPLUS ── */
-  .beneficios { background:var(--azul); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
+  .beneficios { background:var(--azul); border-radius:2.5rem; margin:0 2rem; padding:3.5rem 3rem; }
   .beneficios .section-label { color:var(--dorado-claro); }
   .beneficios .section-label::before { background:var(--dorado); }
   .beneficios h2 { color:white; }
   .beneficios h2 em { color:var(--dorado-claro); }
   .beneficios .section-sub { color:rgba(255,255,255,0.75); }
-  .beneficios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+  .beneficios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
   .beneficio-card {
     background:rgba(255,255,255,0.1);
     border:1px solid rgba(255,255,255,0.15);
@@ -172,8 +172,8 @@
   .beneficio-highlight { display:inline-block; background:var(--dorado); color:white; font-size:0.72rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:50px; margin-top:0.8rem; }
 
   /* ── COMO FUNCIONA ── */
-  .como-funciona { background:var(--verde-menta); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
-  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:3.5rem; position:relative; }
+  .como-funciona { background:var(--verde-menta); border-radius:2.5rem; margin:0 2rem; padding:3.5rem 3rem; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2rem; position:relative; }
   .steps::before { content:''; position:absolute; top:28px; left:calc(16.67% + 28px); right:calc(16.67% + 28px); height:2px; background:rgba(26,107,74,0.2); }
   .step { display:flex; flex-direction:column; align-items:flex-start; gap:1rem; }
   .step-num { width:56px; height:56px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700; color:white; }
@@ -239,7 +239,7 @@
   .planes-nota a { color:var(--verde); }
 
   /* ── QUIZ ── */
-  .quiz-section { background:linear-gradient(135deg,var(--azul) 0%,var(--azul-oscuro) 100%); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
+  .quiz-section { background:linear-gradient(135deg,var(--azul) 0%,var(--azul-oscuro) 100%); border-radius:2.5rem; margin:0 2rem; padding:3.5rem 3rem; }
   .quiz-section .section-label { color:var(--dorado-claro); }
   .quiz-section .section-label::before { background:var(--dorado); }
   .quiz-section h2 { color:white; }
@@ -292,8 +292,8 @@
   .valor-desc { font-size:0.78rem; color:var(--texto-suave); line-height:1.5; }
 
   /* ── TESTIMONIOS ── */
-  .testimonios { background:var(--verde-menta); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
-  .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+  .testimonios { background:var(--verde-menta); border-radius:2.5rem; margin:0 2rem; padding:3.5rem 3rem; }
+  .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; }
   .testimonio-card { background:white; border-radius:1.2rem; padding:1.8rem; box-shadow:0 4px 20px rgba(26,107,74,0.06); }
   .stars { color:var(--dorado); font-size:1rem; letter-spacing:0.1em; margin-bottom:1rem; }
   .testimonio-text { font-size:0.88rem; color:var(--texto-suave); line-height:1.7; margin-bottom:1.2rem; font-style:italic; }
@@ -303,7 +303,7 @@
   .author-desc { font-size:0.75rem; color:var(--texto-suave); }
 
   /* ── CTA FINAL ── */
-  .cta-final { background:linear-gradient(135deg,var(--azul) 0%,var(--azul-oscuro) 100%); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; text-align:center; position:relative; overflow:hidden; }
+  .cta-final { background:linear-gradient(135deg,var(--azul) 0%,var(--azul-oscuro) 100%); border-radius:2.5rem; margin:0 2rem; padding:3.5rem 3rem; text-align:center; position:relative; overflow:hidden; }
   .cta-final::before { content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(140,200,60,0.2) 0%,transparent 70%); border-radius:50%; }
   .cta-final h2 { color:white; max-width:600px; margin:0 auto 1rem; }
   .cta-final h2 em { color:var(--dorado-claro); }
@@ -315,7 +315,7 @@
   .btn-outline-white:hover { background:rgba(255,255,255,0.1); }
 
   /* ── FOOTER ── */
-  footer { padding:4rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; border-top:1px solid rgba(26,107,74,0.1); margin-top:4rem; }
+  footer { padding:4rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; border-top:1px solid rgba(26,107,74,0.1); margin-top:2rem; }
   .footer-logo { font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--verde); margin-bottom:1rem; }
   .footer-logo span { color:var(--dorado); }
   .footer-desc { font-size:0.85rem; color:var(--texto-suave); line-height:1.7; margin-bottom:1.5rem; }
@@ -734,7 +734,7 @@
 <div class="divider"></div>
 
 <!-- QUIZ -->
-<section id="quiz" style="padding:5rem 2rem;">
+<section id="quiz" style="padding:3rem 2rem;">
   <div class="quiz-section">
     <div class="section-label">Encuentra tu plan ideal</div>
     <h2>¿No sabes cuál plan<br>es <em>para ti?</em></h2>
@@ -917,7 +917,7 @@
 </div>
 
 <!-- CTA FINAL -->
-<section style="padding:5rem 2rem;">
+<section style="padding:3rem 2rem;">
   <div class="cta-final">
     <div class="section-label" style="color:var(--dorado-claro);justify-content:center;">
       <span style="display:block;width:24px;height:2px;background:var(--dorado)"></span>
