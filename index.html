@@ -3,914 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitalplus Salud y Seguros</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Vitalplus Salud y Seguros | Corredora Autorizada MedPlus</title>
+<meta name="description" content="Asesoría personalizada y gratuita en planes de medicina prepagada MedPlus. Planes Azules, Excelsos, Light y AMD. 9 años de experiencia en Colombia.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --verde: #1a6b4a;
-    --verde-claro: #2d9168;
-    --verde-menta: #e8f5ef;
-    --dorado: #c8973a;
-    --dorado-claro: #f5e6c8;
-    --crema: #faf7f2;
-    --texto: #1c2b22;
-    --texto-suave: #4a6355;
+    --verde: #14a028;
+    --verde-claro: #8cc83c;
+    --verde-menta: #eaf7e8;
+    --dorado: #1464b4;
+    --dorado-claro: #ddeeff;
+    --crema: #f4f9ff;
+    --texto: #0d1f3c;
+    --texto-suave: #3a5a7a;
     --blanco: #ffffff;
+    --azul: #1464b4;
+    --azul-oscuro: #14508c;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--crema); color: var(--texto); overflow-x: hidden; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--crema);
-    color: var(--texto);
-    overflow-x: hidden;
-  }
-
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(250, 247, 242, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(26, 107, 74, 0.1);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.1rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,247,242,0.93);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(26,107,74,0.1);
   }
+  .nav-logo { display:inline-flex; align-items:center; gap:0.5rem; font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--azul); letter-spacing:-0.02em; text-decoration:none; }
+  .nav-logo .logo-brand { display:inline-flex; gap:0; }
+  .nav-logo img { width:40px; height:40px; object-fit:contain; background:transparent; }
+  .nav-logo .logo-vital { color:var(--azul); }
+  .nav-logo .logo-plus { color:var(--verde); }
+  .nav-logo .logo-salud { color:var(--texto-suave); font-weight:400; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { text-decoration:none; color:var(--texto-suave); font-size:0.88rem; font-weight:500; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--verde); }
+  .nav-cta { background:var(--verde) !important; color:var(--blanco) !important; padding:0.5rem 1.2rem; border-radius:50px; font-weight:600 !important; }
+  .nav-cta:hover { background:var(--verde-claro) !important; }
 
-  .nav-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--verde);
-    letter-spacing: -0.02em;
+  /* Hamburger */
+  .nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+  .nav-hamburger span { display:block; width:24px; height:2px; background:var(--verde); border-radius:2px; transition:all 0.3s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile {
+    display:none; position:fixed; top:60px; left:0; right:0; z-index:99;
+    background:rgba(250,247,242,0.98); backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(26,107,74,0.1);
+    flex-direction:column; padding:1.5rem 2rem; gap:1rem;
   }
+  .nav-mobile.open { display:flex; }
+  .nav-mobile a { text-decoration:none; color:var(--texto-suave); font-size:1rem; font-weight:500; padding:0.5rem 0; border-bottom:1px solid rgba(26,107,74,0.08); }
+  .nav-mobile a:last-child { border-bottom:none; }
+  .nav-mobile .nav-cta-mobile { background:var(--verde); color:white !important; padding:0.8rem 1.5rem; border-radius:50px; text-align:center; margin-top:0.5rem; font-weight:600; }
 
-  .nav-logo span { color: var(--dorado); }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--texto-suave);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--verde); }
-
-  .nav-cta {
-    background: var(--verde);
-    color: var(--blanco) !important;
-    padding: 0.55rem 1.3rem;
-    border-radius: 50px;
-    font-weight: 600 !important;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--verde-claro) !important; color: var(--blanco) !important; }
-
-  /* HERO */
+  /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 7rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(200, 151, 58, 0.12) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
+    content:''; position:absolute; top:-100px; right:-100px;
+    width:600px; height:600px;
+    background:radial-gradient(circle,rgba(20,100,180,0.1) 0%,transparent 70%);
+    border-radius:50%; pointer-events:none;
   }
-
   .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -50px; left: -50px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(26, 107, 74, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
+    content:''; position:absolute; bottom:-50px; left:-50px;
+    width:400px; height:400px;
+    background:radial-gradient(circle,rgba(20,160,40,0.08) 0%,transparent 70%);
+    border-radius:50%; pointer-events:none;
   }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    animation: fadeUp 0.9s ease both;
-  }
-
+  .hero-content { position:relative; z-index:2; animation:fadeUp 0.9s ease both; }
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--dorado-claro);
-    color: var(--dorado);
-    border: 1px solid rgba(200, 151, 58, 0.3);
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:var(--dorado-claro); color:var(--azul);
+    border:1px solid rgba(20,100,180,0.3);
+    padding:0.4rem 1rem; border-radius:50px;
+    font-size:0.78rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;
+    margin-bottom:1.5rem;
   }
-
-  .hero-badge::before { content: '✦'; }
-
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.8rem, 5vw, 4rem);
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: var(--texto);
-    margin-bottom: 1.5rem;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--verde);
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--texto-suave);
-    line-height: 1.7;
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
+  .hero-badge::before { content:'✦'; }
+  h1 { font-family:'Fraunces',serif; font-size:clamp(2.6rem,5vw,3.8rem); font-weight:600; line-height:1.1; letter-spacing:-0.03em; margin-bottom:1.5rem; }
+  h1 em { font-style:italic; color:var(--verde); }
+  .hero-sub { font-size:1.05rem; color:var(--texto-suave); line-height:1.7; max-width:480px; margin-bottom:2.5rem; font-weight:300; }
+  .hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--verde);
-    color: var(--blanco);
-    padding: 0.9rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.25s;
-    box-shadow: 0 4px 20px rgba(26, 107, 74, 0.3);
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:var(--verde); color:var(--blanco);
+    padding:0.9rem 2rem; border-radius:50px;
+    text-decoration:none; font-weight:600; font-size:0.95rem;
+    transition:all 0.25s; box-shadow:0 4px 20px rgba(26,107,74,0.3);
   }
-
-  .btn-primary:hover {
-    background: var(--verde-claro);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(26, 107, 74, 0.35);
-  }
-
+  .btn-primary:hover { background:var(--verde-claro); transform:translateY(-2px); box-shadow:0 8px 30px rgba(26,107,74,0.35); }
   .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    color: var(--verde);
-    padding: 0.9rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border: 2px solid var(--verde);
-    transition: all 0.25s;
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:transparent; color:var(--verde);
+    padding:0.9rem 2rem; border-radius:50px;
+    text-decoration:none; font-weight:600; font-size:0.95rem;
+    border:2px solid var(--verde); transition:all 0.25s;
   }
+  .btn-secondary:hover { background:var(--verde-menta); transform:translateY(-2px); }
+  .hero-stats { display:flex; gap:2.5rem; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(26,107,74,0.15); }
+  .stat-number { font-family:'Fraunces',serif; font-size:2rem; font-weight:700; color:var(--verde); line-height:1; }
+  .stat-label { font-size:0.78rem; color:var(--texto-suave); margin-top:0.3rem; }
 
-  .btn-secondary:hover {
-    background: var(--verde-menta);
-    transform: translateY(-2px);
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(26, 107, 74, 0.15);
-  }
-
-  .stat-item {}
-  .stat-number {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--verde);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--texto-suave);
-    margin-top: 0.3rem;
-    font-weight: 400;
-  }
-
-  /* HERO VISUAL */
-  .hero-visual {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeUp 0.9s 0.2s ease both;
-  }
-
+  /* Hero card */
+  .hero-visual { position:relative; z-index:2; display:flex; justify-content:center; align-items:center; animation:fadeUp 0.9s 0.2s ease both; }
   .hero-card {
-    background: var(--blanco);
-    border-radius: 2rem;
-    padding: 2.5rem;
-    box-shadow: 0 20px 60px rgba(26, 107, 74, 0.12), 0 4px 16px rgba(0,0,0,0.06);
-    width: 100%;
-    max-width: 360px;
-    position: relative;
+    background:var(--blanco); border-radius:2rem; padding:2.2rem;
+    box-shadow:0 20px 60px rgba(26,107,74,0.12),0 4px 16px rgba(0,0,0,0.06);
+    width:100%; max-width:340px; position:relative;
   }
-
   .hero-card::before {
-    content: '';
-    position: absolute;
-    top: -3px; left: -3px; right: -3px; bottom: -3px;
-    border-radius: calc(2rem + 3px);
-    background: linear-gradient(135deg, var(--verde), var(--dorado));
-    z-index: -1;
-    opacity: 0.3;
+    content:''; position:absolute; top:-3px; left:-3px; right:-3px; bottom:-3px;
+    border-radius:calc(2rem + 3px);
+    background:linear-gradient(135deg,var(--verde),var(--dorado));
+    z-index:-1; opacity:0.25;
   }
+  .floating-badge { position:absolute; top:-12px; right:20px; background:var(--dorado); color:white; font-size:0.72rem; font-weight:700; padding:0.35rem 1rem; border-radius:50px; letter-spacing:0.05em; }
+  .card-icon { width:50px; height:50px; background:var(--verde-menta); border-radius:0.9rem; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1rem; }
+  .card-tag { display:inline-block; background:var(--verde-menta); color:var(--verde); font-size:0.72rem; font-weight:600; padding:0.25rem 0.7rem; border-radius:50px; margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.04em; }
+  .card-title { font-family:'Fraunces',serif; font-size:1.2rem; font-weight:600; margin-bottom:0.5rem; }
+  .card-desc { font-size:0.85rem; color:var(--texto-suave); line-height:1.6; margin-bottom:1.2rem; }
+  .card-features { list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.2rem; }
+  .card-features li { display:flex; align-items:center; gap:0.5rem; font-size:0.83rem; color:var(--texto-suave); }
+  .card-features li::before { content:'✓'; width:18px; height:18px; background:var(--verde); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; }
+  .card-btn { display:block; text-align:center; background:var(--verde); color:white; padding:0.75rem; border-radius:0.8rem; text-decoration:none; font-weight:600; font-size:0.88rem; transition:all 0.2s; }
+  .card-btn:hover { background:var(--verde-claro); }
 
-  .card-icon {
-    width: 56px; height: 56px;
-    background: var(--verde-menta);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    margin-bottom: 1.2rem;
+  /* ── SECTIONS ── */
+  section { padding:6rem 4rem; }
+  .section-label { display:inline-flex; align-items:center; gap:0.5rem; color:var(--verde); font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem; }
+  .section-label::before { content:''; display:block; width:24px; height:2px; background:var(--dorado); }
+  h2 { font-family:'Fraunces',serif; font-size:clamp(1.9rem,3.5vw,2.7rem); font-weight:600; letter-spacing:-0.03em; line-height:1.15; margin-bottom:1rem; }
+  h2 em { font-style:italic; color:var(--verde); }
+  .section-sub { font-size:0.98rem; color:var(--texto-suave); line-height:1.7; max-width:520px; font-weight:300; }
+  .divider { height:1px; background:linear-gradient(to right,transparent,rgba(26,107,74,0.2),transparent); margin:0 4rem; }
+
+  /* ── BENEFICIOS MEDPLUS ── */
+  .beneficios { background:var(--azul); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
+  .beneficios .section-label { color:var(--dorado-claro); }
+  .beneficios .section-label::before { background:var(--dorado); }
+  .beneficios h2 { color:white; }
+  .beneficios h2 em { color:var(--dorado-claro); }
+  .beneficios .section-sub { color:rgba(255,255,255,0.75); }
+  .beneficios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+  .beneficio-card {
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:1.2rem; padding:1.8rem;
+    transition:all 0.3s;
   }
+  .beneficio-card:hover { background:rgba(255,255,255,0.17); transform:translateY(-3px); }
+  .beneficio-icon { font-size:2rem; margin-bottom:1rem; }
+  .beneficio-title { font-weight:600; font-size:1rem; color:white; margin-bottom:0.5rem; }
+  .beneficio-desc { font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:1.6; }
+  .beneficio-highlight { display:inline-block; background:var(--dorado); color:white; font-size:0.72rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:50px; margin-top:0.8rem; }
 
-  .card-tag {
-    display: inline-block;
-    background: var(--verde-menta);
-    color: var(--verde);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.3rem 0.8rem;
-    border-radius: 50px;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  /* ── COMO FUNCIONA ── */
+  .como-funciona { background:var(--verde-menta); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:3.5rem; position:relative; }
+  .steps::before { content:''; position:absolute; top:28px; left:calc(16.67% + 28px); right:calc(16.67% + 28px); height:2px; background:rgba(26,107,74,0.2); }
+  .step { display:flex; flex-direction:column; align-items:flex-start; gap:1rem; }
+  .step-num { width:56px; height:56px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700; color:white; }
+  .step-title { font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; color:var(--texto); }
+  .step-desc { font-size:0.87rem; color:var(--texto-suave); line-height:1.6; }
+
+  /* ── PLANES ── */
+  .planes-tabs { display:flex; gap:0.5rem; margin-top:2.5rem; margin-bottom:2rem; flex-wrap:wrap; }
+  .tab-btn {
+    padding:0.55rem 1.3rem; border-radius:50px; border:2px solid rgba(26,107,74,0.2);
+    background:transparent; color:var(--texto-suave); font-size:0.85rem; font-weight:600;
+    cursor:pointer; transition:all 0.2s; font-family:'DM Sans',sans-serif;
   }
-
-  .card-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--texto);
-    margin-bottom: 0.6rem;
-  }
-
-  .card-desc {
-    font-size: 0.9rem;
-    color: var(--texto-suave);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .card-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .card-features li {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.88rem;
-    color: var(--texto-suave);
-  }
-
-  .card-features li::before {
-    content: '✓';
-    width: 20px; height: 20px;
-    background: var(--verde);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .card-price {
-    display: flex;
-    align-items: baseline;
-    gap: 0.3rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .price-desde { font-size: 0.8rem; color: var(--texto-suave); }
-  .price-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--verde);
-  }
-  .price-mes { font-size: 0.8rem; color: var(--texto-suave); }
-
-  .card-btn {
-    display: block;
-    text-align: center;
-    background: var(--verde);
-    color: white;
-    padding: 0.8rem;
-    border-radius: 0.8rem;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-  }
-
-  .card-btn:hover { background: var(--verde-claro); }
-
-  .floating-badge {
-    position: absolute;
-    top: -12px; right: 20px;
-    background: var(--dorado);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    letter-spacing: 0.05em;
-  }
-
-  /* SECTION BASE */
-  section { padding: 6rem 4rem; }
-
-  .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--verde);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--dorado);
-  }
-
-  h2 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    color: var(--texto);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-  }
-
-  h2 em { font-style: italic; color: var(--verde); }
-
-  .section-sub {
-    font-size: 1rem;
-    color: var(--texto-suave);
-    line-height: 1.7;
-    max-width: 520px;
-    font-weight: 300;
-  }
-
-  /* COMO FUNCIONA */
-  .como-funciona {
-    background: var(--verde);
-    color: white;
-    border-radius: 2.5rem;
-    margin: 0 2rem;
-    padding: 5rem 4rem;
-  }
-
-  .como-funciona .section-label { color: var(--dorado-claro); }
-  .como-funciona .section-label::before { background: var(--dorado); }
-  .como-funciona h2 { color: white; }
-  .como-funciona h2 em { color: var(--dorado-claro); }
-  .como-funciona .section-sub { color: rgba(255,255,255,0.75); }
-
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3.5rem;
-    position: relative;
-  }
-
-  .steps::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: calc(16.67% + 28px);
-    right: calc(16.67% + 28px);
-    height: 2px;
-    background: rgba(255,255,255,0.2);
-  }
-
-  .step {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    position: relative;
-  }
-
-  .step-num {
-    width: 56px; height: 56px;
-    background: rgba(255,255,255,0.15);
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--dorado-claro);
-  }
-
-  .step-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: white;
-  }
-
-  .step-desc {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-  }
-
-  /* PLANES */
-  .planes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
+  .tab-btn:hover { border-color:var(--verde); color:var(--verde); }
+  .tab-btn.active { background:var(--verde); color:white; border-color:var(--verde); }
+  .planes-content { display:none; }
+  .planes-content.active { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
   .plan-card {
-    background: var(--blanco);
-    border-radius: 1.5rem;
-    padding: 2rem;
-    border: 2px solid transparent;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    background:var(--blanco); border-radius:1.5rem; padding:2rem;
+    border:2px solid transparent; transition:all 0.3s; position:relative; overflow:hidden;
   }
-
-  .plan-card:hover {
-    border-color: var(--verde);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(26, 107, 74, 0.15);
+  .plan-card:hover { border-color:var(--verde); transform:translateY(-4px); box-shadow:0 16px 40px rgba(26,107,74,0.15); }
+  .plan-card.featured { border-color:var(--verde); box-shadow:0 12px 40px rgba(26,107,74,0.2); }
+  .plan-card.featured::before { content:'MÁS POPULAR'; position:absolute; top:1.2rem; right:-2.5rem; background:var(--dorado); color:white; font-size:0.62rem; font-weight:700; padding:0.3rem 3rem; letter-spacing:0.08em; transform:rotate(35deg); }
+  /* Plan name badges — colores oficiales MedPlus */
+  .plan-name-badge {
+    display:inline-block; color:white; border-radius:0.6rem;
+    padding:0.5rem 1rem; margin-bottom:1rem;
+    font-family:'Barlow Condensed','DM Sans',sans-serif;
+    font-weight:800; font-size:1.1rem; letter-spacing:0.02em;
+    line-height:1;
   }
+  /* Azules */
+  .badge-indigo  { background:#1a237e; }
+  .badge-celeste { background:#42a5f5; }
+  .badge-turquesa{ background:#00838f; }
+  /* Excelsos */
+  .badge-pergamino{ background:#6a1b9a; }
+  .badge-cafe-excelso { background:#7b1fa2; }
+  .badge-cereza  { background:#1b5e20; }
+  /* Light */
+  .badge-cafe-express { background:#2e7d32; }
+  .badge-selecto { background:#388e3c; }
+  .badge-salud   { background:#43a047; }
+  /* AMD */
+  .badge-amd-plus    { background:#f57f17; }
+  .badge-amd-integral{ background:#f9a825; color:#1a1a1a; }
+  .badge-amd-express { background:#ff8f00; }
+  .badge-amd-modular { background:#ffa000; color:#1a1a1a; }
 
-  .plan-card.featured {
-    border-color: var(--verde);
-    box-shadow: 0 12px 40px rgba(26, 107, 74, 0.2);
+  .plan-icon { display:none; }
+  .card-icon { display:none; }
+  .plan-icon { font-size:1.8rem; margin-bottom:0.8rem; }
+  .plan-name { font-family:'Fraunces',serif; font-size:1.25rem; font-weight:600; color:var(--texto); margin-bottom:0.3rem; }
+  .plan-target { font-size:0.8rem; color:var(--texto-suave); margin-bottom:1.1rem; }
+  .plan-features { list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.4rem; padding-bottom:1.4rem; border-bottom:1px solid var(--verde-menta); }
+  .plan-features li { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.83rem; color:var(--texto-suave); }
+  .plan-features li span { color:var(--verde); font-weight:700; flex-shrink:0; }
+  .plan-cta { display:block; text-align:center; background:var(--verde-menta); color:var(--verde); padding:0.7rem; border-radius:0.8rem; text-decoration:none; font-weight:600; font-size:0.85rem; transition:all 0.2s; }
+  .plan-card.featured .plan-cta { background:var(--verde); color:white; }
+  .plan-cta:hover { opacity:0.85; }
+  .planes-nota { margin-top:1.5rem; font-size:0.82rem; color:var(--texto-suave); text-align:center; }
+  .planes-nota a { color:var(--verde); }
+
+  /* ── QUIZ ── */
+  .quiz-section { background:linear-gradient(135deg,var(--azul) 0%,var(--azul-oscuro) 100%); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
+  .quiz-section .section-label { color:var(--dorado-claro); }
+  .quiz-section .section-label::before { background:var(--dorado); }
+  .quiz-section h2 { color:white; }
+  .quiz-section h2 em { color:var(--dorado-claro); }
+  .quiz-section .section-sub { color:rgba(255,255,255,0.75); }
+  .quiz-wrapper { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:1.5rem; padding:2.5rem; margin-top:2.5rem; max-width:680px; }
+  .quiz-step { display:none; }
+  .quiz-step.active { display:block; }
+  .quiz-question { font-family:'Fraunces',serif; font-size:1.2rem; color:white; margin-bottom:1.5rem; }
+  .quiz-options { display:flex; flex-direction:column; gap:0.8rem; }
+  .quiz-option {
+    display:flex; align-items:center; gap:1rem;
+    background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.15);
+    border-radius:0.9rem; padding:1rem 1.2rem;
+    cursor:pointer; transition:all 0.2s; color:white;
   }
-
-  .plan-card.featured::before {
-    content: 'MÁS POPULAR';
-    position: absolute;
-    top: 1.2rem; right: -2.5rem;
-    background: var(--dorado);
-    color: white;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 0.3rem 3rem;
-    letter-spacing: 0.08em;
-    transform: rotate(35deg);
+  .quiz-option:hover { background:rgba(255,255,255,0.15); border-color:var(--dorado); }
+  .quiz-option.selected { background:rgba(200,151,58,0.2); border-color:var(--dorado); }
+  .quiz-option-icon { font-size:1.4rem; }
+  .quiz-option-text { font-size:0.92rem; font-weight:500; }
+  .quiz-nav { display:flex; gap:1rem; margin-top:1.5rem; align-items:center; }
+  .quiz-btn {
+    padding:0.7rem 1.8rem; border-radius:50px; border:none; cursor:pointer;
+    font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.9rem; transition:all 0.2s;
   }
+  .quiz-btn-primary { background:var(--dorado); color:white; }
+  .quiz-btn-primary:hover { background:#b8872a; }
+  .quiz-btn-secondary { background:rgba(255,255,255,0.1); color:white; border:1px solid rgba(255,255,255,0.2); }
+  .quiz-progress { display:flex; gap:0.4rem; align-items:center; margin-left:auto; }
+  .quiz-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.25); }
+  .quiz-dot.active { background:var(--dorado); }
+  .quiz-result { display:none; }
+  .quiz-result.active { display:block; }
+  .result-card { background:white; border-radius:1.2rem; padding:2rem; margin-top:1rem; }
+  .result-plan-name { font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600; color:var(--verde); margin-bottom:0.5rem; }
+  .result-desc { font-size:0.9rem; color:var(--texto-suave); line-height:1.6; margin-bottom:1.5rem; }
+  .result-btn { display:inline-flex; align-items:center; gap:0.5rem; background:var(--verde); color:white; padding:0.8rem 1.8rem; border-radius:50px; text-decoration:none; font-weight:600; font-size:0.9rem; }
 
-  .plan-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+  /* ── NOSOTROS ── */
+  .nosotros { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .nosotros-img-placeholder { background:linear-gradient(135deg,var(--verde-menta) 0%,rgba(26,107,74,0.15) 100%); border-radius:2rem; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:5rem; position:relative; overflow:hidden; }
+  .nosotros-stat { position:absolute; bottom:-1.5rem; right:-1.5rem; background:white; border-radius:1.2rem; padding:1.2rem 1.5rem; box-shadow:0 8px 30px rgba(0,0,0,0.1); text-align:center; }
+  .nosotros-stat-num { font-family:'Fraunces',serif; font-size:2.2rem; font-weight:700; color:var(--verde); line-height:1; }
+  .nosotros-stat-label { font-size:0.73rem; color:var(--texto-suave); margin-top:0.3rem; }
+  .nosotros-visual { position:relative; }
+  .valores-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+  .valor-item { background:var(--verde-menta); border-radius:1rem; padding:1.2rem; }
+  .valor-icon { font-size:1.3rem; margin-bottom:0.5rem; }
+  .valor-title { font-weight:600; font-size:0.88rem; color:var(--texto); margin-bottom:0.3rem; }
+  .valor-desc { font-size:0.78rem; color:var(--texto-suave); line-height:1.5; }
 
-  .plan-name {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--texto);
-    margin-bottom: 0.4rem;
-  }
+  /* ── TESTIMONIOS ── */
+  .testimonios { background:var(--verde-menta); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; }
+  .testimonios-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+  .testimonio-card { background:white; border-radius:1.2rem; padding:1.8rem; box-shadow:0 4px 20px rgba(26,107,74,0.06); }
+  .stars { color:var(--dorado); font-size:1rem; letter-spacing:0.1em; margin-bottom:1rem; }
+  .testimonio-text { font-size:0.88rem; color:var(--texto-suave); line-height:1.7; margin-bottom:1.2rem; font-style:italic; }
+  .testimonio-author { display:flex; align-items:center; gap:0.8rem; }
+  .author-avatar { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:white; font-size:0.85rem; flex-shrink:0; }
+  .author-name { font-weight:600; font-size:0.85rem; color:var(--texto); }
+  .author-desc { font-size:0.75rem; color:var(--texto-suave); }
 
-  .plan-target {
-    font-size: 0.8rem;
-    color: var(--texto-suave);
-    margin-bottom: 1.2rem;
-  }
+  /* ── CTA FINAL ── */
+  .cta-final { background:linear-gradient(135deg,var(--azul) 0%,var(--azul-oscuro) 100%); border-radius:2.5rem; margin:0 2rem; padding:5rem 4rem; text-align:center; position:relative; overflow:hidden; }
+  .cta-final::before { content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(140,200,60,0.2) 0%,transparent 70%); border-radius:50%; }
+  .cta-final h2 { color:white; max-width:600px; margin:0 auto 1rem; }
+  .cta-final h2 em { color:var(--dorado-claro); }
+  .cta-final p { color:rgba(255,255,255,0.75); margin-bottom:2.5rem; font-size:1.02rem; }
+  .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .btn-white { background:white; color:var(--verde); padding:0.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:700; transition:all 0.2s; display:inline-flex; align-items:center; gap:0.5rem; }
+  .btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  .btn-outline-white { border:2px solid rgba(255,255,255,0.5); color:white; padding:0.9rem 2rem; border-radius:50px; text-decoration:none; font-weight:600; transition:all 0.2s; display:inline-flex; align-items:center; gap:0.5rem; }
+  .btn-outline-white:hover { background:rgba(255,255,255,0.1); }
 
-  .plan-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--verde-menta);
-  }
+  /* ── FOOTER ── */
+  footer { padding:4rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; border-top:1px solid rgba(26,107,74,0.1); margin-top:4rem; }
+  .footer-logo { font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--verde); margin-bottom:1rem; }
+  .footer-logo span { color:var(--dorado); }
+  .footer-desc { font-size:0.85rem; color:var(--texto-suave); line-height:1.7; margin-bottom:1.5rem; }
+  .footer-social { display:flex; gap:0.8rem; }
+  .social-link { width:36px; height:36px; background:var(--verde-menta); color:var(--azul); border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:0.9rem; transition:all 0.2s; }
+  .social-link:hover { background:var(--azul); color:white; }
+  .footer-col h4 { font-weight:600; font-size:0.88rem; color:var(--texto); margin-bottom:1rem; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .footer-col ul a { text-decoration:none; font-size:0.83rem; color:var(--texto-suave); transition:color 0.2s; }
+  .footer-col ul a:hover { color:var(--verde); }
+  .footer-bottom { padding:1.5rem 4rem; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(26,107,74,0.08); font-size:0.78rem; color:var(--texto-suave); }
+  .medplus-badge { display:inline-flex; align-items:center; gap:0.4rem; background:var(--verde-menta); color:var(--verde); padding:0.3rem 0.8rem; border-radius:50px; font-size:0.72rem; font-weight:600; }
 
-  .plan-features li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--texto-suave);
-  }
+  /* ── WHATSAPP FLOTANTE ── */
+  .whatsapp-float { position:fixed; bottom:2rem; right:2rem; width:58px; height:58px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:1.5rem; box-shadow:0 4px 20px rgba(37,211,102,0.4); z-index:999; transition:all 0.2s; animation:pulse 2.5s infinite; }
+  .whatsapp-float:hover { transform:scale(1.1); animation:none; }
 
-  .plan-features li span { color: var(--verde); font-weight: 700; }
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pulse { 0%,100% { box-shadow:0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow:0 4px 30px rgba(37,211,102,0.7); } }
 
-  .plan-cta {
-    display: block;
-    text-align: center;
-    background: var(--verde-menta);
-    color: var(--verde);
-    padding: 0.7rem;
-    border-radius: 0.8rem;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.88rem;
-    transition: all 0.2s;
-  }
-
-  .plan-card.featured .plan-cta {
-    background: var(--verde);
-    color: white;
-  }
-
-  .plan-cta:hover { opacity: 0.85; }
-
-  /* TESTIMONIOS */
-  .testimonios {
-    background: var(--verde-menta);
-    border-radius: 2.5rem;
-    margin: 0 2rem;
-    padding: 5rem 4rem;
-  }
-
-  .testimonios-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .testimonio-card {
-    background: white;
-    border-radius: 1.2rem;
-    padding: 1.8rem;
-    box-shadow: 0 4px 20px rgba(26, 107, 74, 0.06);
-  }
-
-  .stars {
-    color: var(--dorado);
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
-  }
-
-  .testimonio-text {
-    font-size: 0.9rem;
-    color: var(--texto-suave);
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
-    font-style: italic;
-  }
-
-  .testimonio-author {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .author-avatar {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: white;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-  }
-
-  .author-name {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--texto);
-  }
-
-  .author-desc {
-    font-size: 0.78rem;
-    color: var(--texto-suave);
-  }
-
-  /* NOSOTROS */
-  .nosotros {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .nosotros-visual {
-    position: relative;
-  }
-
-  .nosotros-img-placeholder {
-    background: linear-gradient(135deg, var(--verde-menta) 0%, rgba(26,107,74,0.15) 100%);
-    border-radius: 2rem;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .nosotros-img-placeholder::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 40%;
-    background: linear-gradient(to top, rgba(26,107,74,0.1), transparent);
-  }
-
-  .nosotros-stat {
-    position: absolute;
-    bottom: -1.5rem; right: -1.5rem;
-    background: white;
-    border-radius: 1.2rem;
-    padding: 1.2rem 1.5rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-
-  .nosotros-stat-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--verde);
-    line-height: 1;
-  }
-
-  .nosotros-stat-label {
-    font-size: 0.75rem;
-    color: var(--texto-suave);
-    margin-top: 0.3rem;
-  }
-
-  .valores-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .valor-item {
-    background: var(--verde-menta);
-    border-radius: 1rem;
-    padding: 1.2rem;
-  }
-
-  .valor-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
-  .valor-title {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--texto);
-    margin-bottom: 0.3rem;
-  }
-  .valor-desc { font-size: 0.8rem; color: var(--texto-suave); line-height: 1.5; }
-
-  /* CTA FINAL */
-  .cta-final {
-    background: linear-gradient(135deg, var(--verde) 0%, #0f4a32 100%);
-    border-radius: 2.5rem;
-    margin: 0 2rem;
-    padding: 5rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-final::before {
-    content: '';
-    position: absolute;
-    top: -50%; right: -10%;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(200,151,58,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .cta-final h2 { color: white; max-width: 600px; margin: 0 auto 1rem; }
-  .cta-final h2 em { color: var(--dorado-claro); }
-  .cta-final p { color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; font-size: 1.05rem; }
-
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-white {
-    background: white;
-    color: var(--verde);
-    padding: 0.9rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-
-  .btn-outline-white {
-    border: 2px solid rgba(255,255,255,0.5);
-    color: white;
-    padding: 0.9rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
-
-  /* FOOTER */
-  footer {
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    border-top: 1px solid rgba(26,107,74,0.1);
-    margin-top: 4rem;
-  }
-
-  .footer-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--verde);
-    margin-bottom: 1rem;
-  }
-
-  .footer-logo span { color: var(--dorado); }
-
-  .footer-desc {
-    font-size: 0.88rem;
-    color: var(--texto-suave);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 0.8rem;
-  }
-
-  .social-link {
-    width: 38px; height: 38px;
-    background: var(--verde-menta);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: all 0.2s;
-  }
-
-  .social-link:hover { background: var(--verde); }
-
-  .footer-col h4 {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--texto);
-    margin-bottom: 1rem;
-  }
-
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .footer-col ul a {
-    text-decoration: none;
-    font-size: 0.85rem;
-    color: var(--texto-suave);
-    transition: color 0.2s;
-  }
-  .footer-col ul a:hover { color: var(--verde); }
-
-  .footer-bottom {
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(26,107,74,0.08);
-    font-size: 0.8rem;
-    color: var(--texto-suave);
-  }
-
-  /* WHATSAPP FLOTANTE */
-  .whatsapp-float {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 60px; height: 60px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 1.6rem;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    z-index: 999;
-    transition: all 0.2s;
-    animation: pulse 2s infinite;
-  }
-
-  .whatsapp-float:hover {
-    transform: scale(1.1);
-    animation: none;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
-    50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(26,107,74,0.2), transparent);
-    margin: 0 4rem;
-  }
-
-  /* RESPONSIVE HINTS */
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; }
-    .hero-visual { display: none; }
-    section { padding: 4rem 2rem; }
-    .planes-grid, .steps, .testimonios-grid { grid-template-columns: 1fr; }
-    .nosotros { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr 1fr; }
-    .como-funciona, .testimonios, .cta-final { margin: 0 1rem; padding: 3rem 2rem; }
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    .nav-hamburger { display:flex; }
+    .hero { grid-template-columns:1fr; padding:6rem 1.5rem 3rem; }
+    .hero-visual { display:none; }
+    section { padding:4rem 1.5rem; }
+    .beneficios-grid,.steps,.testimonios-grid { grid-template-columns:1fr; }
+    .planes-content.active { grid-template-columns:1fr; }
+    .nosotros { grid-template-columns:1fr; }
+    footer { grid-template-columns:1fr; padding:2rem 1.5rem; gap:2rem; }
+    .footer-bottom { padding:1rem 1.5rem; flex-direction:column; gap:0.5rem; text-align:center; }
+    .beneficios,.como-funciona,.quiz-section,.testimonios,.cta-final { margin:0 1rem; padding:3rem 1.5rem; }
+    .divider { margin:0 1.5rem; }
   }
 </style>
 </head>
@@ -918,26 +359,39 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Vitalplus <span>Salud</span></div>
+  <a href="#" class="nav-logo"><img src="data:image/png;base64,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" alt="Vitalplus Logo"><span class="logo-brand"><span class="logo-vital">Vital</span><span class="logo-plus">plus</span></span><span class="logo-salud">Salud</span></a>
   <ul class="nav-links">
-    <li><a href="#planes">Planes</a></li>
+    <li><a href="#planes">Planes MedPlus</a></li>
+    <li><a href="#quiz">¿Cuál es para mí?</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#testimonios">Testimonios</a></li>
-    <li><a href="https://wa.me/573160277642" class="nav-cta">Cotizar ahora →</a></li>
+    <li><a href="https://wa.me/573160277642" class="nav-cta">Cotizar gratis →</a></li>
   </ul>
+  <button class="nav-hamburger" onclick="toggleMenu(this)" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Menú móvil -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#planes" onclick="closeMobileMenu()">Planes MedPlus</a>
+  <a href="#quiz" onclick="closeMobileMenu()">¿Cuál plan es para mí?</a>
+  <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="#testimonios" onclick="closeMobileMenu()">Testimonios</a>
+  <a href="https://wa.me/573160277642" class="nav-cta-mobile" onclick="closeMobileMenu()">📲 Cotizar gratis</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">Corredora autorizada MedPlus Salud</div>
+    <div class="hero-badge">Corredora autorizada MedPlus Salud · Colombia</div>
     <h1>Tu salud merece<br><em>el mejor plan,</em><br>no el más caro</h1>
     <p class="hero-sub">
-      Te ayudamos a encontrar el plan de medicina prepagada ideal para ti, tu familia o tu empresa. Asesoría personalizada, sin costo y sin complicaciones.
+      Asesoría personalizada y gratuita en planes de medicina prepagada MedPlus. Para ti, tu familia o tu empresa. Sin filas, sin papeleo, sin presión.
     </p>
     <div class="hero-buttons">
-      <a href="https://wa.me/573160277642" class="btn-primary">📲 Cotiza gratis por WhatsApp</a>
-      <a href="#planes" class="btn-secondary">Ver planes →</a>
+      <a href="https://wa.me/573160277642?text=Hola,%20quiero%20asesoría%20para%20un%20plan%20MedPlus" class="btn-primary">📲 Cotiza gratis por WhatsApp</a>
+      <a href="#quiz" class="btn-secondary">¿Cuál plan es para mí? →</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -949,127 +403,458 @@
         <div class="stat-label">Familias asesoradas</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Asesoría gratuita</div>
+        <div class="stat-number">3.783</div>
+        <div class="stat-label">Prestadores MedPlus</div>
       </div>
     </div>
   </div>
 
   <div class="hero-visual">
     <div class="hero-card">
-      <div class="floating-badge">⭐ Recomendado</div>
-      <div class="card-icon">🏥</div>
-      <div class="card-tag">Plan Familia</div>
-      <div class="card-title">MedPlus Esencial</div>
-      <p class="card-desc">Cobertura completa para toda tu familia con acceso a más de 500 médicos especialistas.</p>
+      <div class="floating-badge">⭐ Más popular</div>
+      <div class="card-icon">💎</div>
+      <div class="card-tag">Planes Azules</div>
+      <div class="card-title">Plan Celeste Plus</div>
+      <p class="card-desc">Cobertura premium con acceso a la red completa de especialistas MedPlus en todo el país.</p>
       <ul class="card-features">
-        <li>Consultas ilimitadas</li>
-        <li>Hospitalización y cirugías</li>
-        <li>Medicamentos incluidos</li>
-        <li>Urgencias 24/7</li>
+        <li>Consultas ilimitadas con especialistas</li>
+        <li>Hospitalización y cirugías cubiertas</li>
+        <li>Urgencias y teleconsulta 24/7</li>
+        <li>Cobertura en todo Colombia</li>
       </ul>
-      <div class="card-price">
-        <span class="price-desde">Desde</span>
-        <span class="price-num">$189.000</span>
-        <span class="price-mes">/mes</span>
-      </div>
-      <a href="https://wa.me/573160277642" class="card-btn">Cotizar este plan →</a>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Celeste%20Plus%20de%20MedPlus" class="card-btn">Cotizar este plan →</a>
     </div>
   </div>
 </section>
 
+<!-- BENEFICIOS MEDPLUS -->
+<div class="beneficios">
+  <div class="section-label">Por qué MedPlus</div>
+  <h2>Beneficios que <em>no encontrarás</em> en otro lugar</h2>
+  <p class="section-sub">MedPlus no es una EPS. Es medicina prepagada premium con beneficios exclusivos que te protegen en cualquier situación.</p>
+
+  <div class="beneficios-grid">
+    <div class="beneficio-card">
+      <div class="beneficio-icon">💼</div>
+      <div class="beneficio-title">Seguro de desempleo incluido</div>
+      <p class="beneficio-desc">Si quedas sin trabajo, MedPlus cubre las cuotas de tu plan de medicina prepagada y EPS por hasta 9 meses. ¡Sin que pagues nada!</p>
+      <span class="beneficio-highlight">Exclusivo MedPlus</span>
+    </div>
+    <div class="beneficio-card">
+      <div class="beneficio-icon">✈️</div>
+      <div class="beneficio-title">Cobertura en el exterior</div>
+      <p class="beneficio-desc">¿Vas a viajar? MedPlus te cuida fuera del país. Disfruta tu viaje tranquilo sabiendo que tienes respaldo médico donde estés.</p>
+    </div>
+    <div class="beneficio-card">
+      <div class="beneficio-icon">🗺️</div>
+      <div class="beneficio-title">Cobertura en todo Colombia</div>
+      <p class="beneficio-desc">Más de 3.783 prestadores adscritos a lo largo y ancho del país. No importa en qué ciudad estés, MedPlus está contigo.</p>
+    </div>
+    <div class="beneficio-card">
+      <div class="beneficio-icon">👨‍⚕️</div>
+      <div class="beneficio-title">Asesor exclusivo asignado</div>
+      <p class="beneficio-desc">Cada afiliado tiene su propio asesor personal en MedPlus. Resuelves dudas con una sola llamada, sin call centers ni laberintos.</p>
+      <span class="beneficio-highlight">Atención personalizada</span>
+    </div>
+    <div class="beneficio-card">
+      <div class="beneficio-icon">💻</div>
+      <div class="beneficio-title">Teleconsulta 24/7</div>
+      <p class="beneficio-desc">Centro médico virtual disponible los 7 días de la semana, las 24 horas. Un médico en tu teléfono cuando más lo necesitas.</p>
+    </div>
+    <div class="beneficio-card">
+      <div class="beneficio-icon">🏥</div>
+      <div class="beneficio-title">Clínicas BlueCare propias</div>
+      <p class="beneficio-desc">Centros médicos exclusivos para afiliados MedPlus con atención preferencial, laboratorio, imágenes diagnósticas y más.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- LÍNEAS DE EMERGENCIA -->
+<div style="background:var(--azul-oscuro);border-radius:1.5rem;margin:2rem 2rem 0;padding:2rem 3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;">
+  <div>
+    <div style="color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;">Líneas de emergencia MedPlus 24/7</div>
+    <div style="color:white;font-size:0.9rem;">Bogotá: <strong>(601) 742 0101</strong> &nbsp;·&nbsp; Resto del país: <strong>01 8000 184 000</strong></div>
+  </div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <a href="tel:6017420101" style="background:white;color:var(--azul);padding:0.6rem 1.4rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.88rem;display:inline-flex;align-items:center;gap:0.4rem;">📞 Llamar Bogotá</a>
+    <a href="tel:018000184000" style="border:2px solid rgba(255,255,255,0.5);color:white;padding:0.6rem 1.4rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:0.88rem;display:inline-flex;align-items:center;gap:0.4rem;">📞 Resto del país</a>
+  </div>
+</div>
+
 <!-- COMO FUNCIONA -->
-<div class="como-funciona">
+<div class="como-funciona" style="margin-top:2rem;">
   <div class="section-label">Proceso simple</div>
   <h2>En 3 pasos tienes tu <em>plan ideal</em></h2>
-  <p class="section-sub">Sin papeleo, sin filas. Te acompañamos en todo el proceso de principio a fin.</p>
+  <p class="section-sub">Sin papeleo, sin filas. Te acompañamos de principio a fin, completamente gratis.</p>
 
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-title">Nos cuentas tu situación</div>
-      <p class="step-desc">Ya sea para ti solo, tu familia o tus empleados, analizamos tus necesidades reales y tu presupuesto.</p>
+      <p class="step-desc">Analizamos tus necesidades reales y presupuesto, ya sea para ti solo, tu familia o tus empleados.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-title">Recibís opciones claras</div>
-      <p class="step-desc">Te presentamos los planes de MedPlus que mejor se adaptan, con comparación honesta de coberturas y precios.</p>
+      <div class="step-title">Recibes opciones claras</div>
+      <p class="step-desc">Te presentamos los planes MedPlus que mejor se adaptan, con comparación honesta de coberturas.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-title">Quedás cubierto y tranquilo</div>
-      <p class="step-desc">Gestionamos todo el proceso de afiliación. Y seguimos contigo después, cuando lo necesites.</p>
+      <div class="step-title">Quedas cubierto y tranquilo</div>
+      <p class="step-desc">Gestionamos todo el proceso de afiliación y seguimos contigo después, cuando lo necesites.</p>
     </div>
   </div>
 </div>
 
-<!-- PLANES -->
-<section id="planes" style="padding: 6rem 4rem;">
-  <div class="section-label">Nuestros planes</div>
-  <h2>Soluciones para <em>cada etapa</em> de tu vida</h2>
-  <p class="section-sub">Todos los planes son de MedPlus Salud, una de las mejores redes de medicina prepagada del país.</p>
+<!-- PLANES MEDPLUS -->
+<section id="planes">
+  <div class="section-label">Planes MedPlus</div>
+  <h2>Encuentra el plan <em>hecho para ti</em></h2>
+  <p class="section-sub">MedPlus tiene 5 familias de planes diseñados para distintos perfiles y presupuestos. Todos incluyen los beneficios exclusivos de MedPlus.</p>
 
-  <div class="planes-grid">
+  <div class="planes-tabs">
+    <button class="tab-btn active" onclick="showPlanes('azules', this)">💎 Planes Azules</button>
+    <button class="tab-btn" onclick="showPlanes('excelsos', this)">☕ Planes Excelsos</button>
+    <button class="tab-btn" onclick="showPlanes('light', this)">✨ Planes Light</button>
+    <button class="tab-btn" onclick="showPlanes('amd', this)">🏢 Planes AMD</button>
+    <button class="tab-btn" onclick="showPlanes('azulplus', this)">🔷 Plan Azul Plus</button>
+  </div>
+
+  <!-- AZULES -->
+  <div class="planes-content active" id="plan-azules">
     <div class="plan-card">
-      <div class="plan-icon">👤</div>
-      <div class="plan-name">Plan Individual</div>
-      <p class="plan-target">Para personas independientes y profesionales</p>
+      <div class="plan-name-badge badge-indigo">Plan Índigo Plus</div>
+      <div class="plan-name">Plan Índigo Plus</div>
+      <p class="plan-target">Cobertura completa para quienes buscan lo mejor</p>
       <ul class="plan-features">
-        <li><span>✓</span> Medicina general y especialistas</li>
-        <li><span>✓</span> Exámenes de laboratorio</li>
-        <li><span>✓</span> Urgencias y hospitalización</li>
-        <li><span>✓</span> App de telemedicina</li>
+        <li><span>✓</span> Medicina general y todos los especialistas</li>
+        <li><span>✓</span> Hospitalización y cirugías sin límite</li>
+        <li><span>✓</span> Urgencias 24/7 y teleconsulta</li>
+        <li><span>✓</span> Cobertura en el exterior incluida</li>
+        <li><span>✓</span> Seguro de desempleo hasta 9 meses</li>
       </ul>
-      <a href="https://wa.me/573160277642" class="plan-cta">Cotizar este plan</a>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Índigo%20Plus%20de%20MedPlus" class="plan-cta">Cotizar Plan Índigo Plus</a>
     </div>
-
     <div class="plan-card featured">
-      <div class="plan-icon">👨‍👩‍👧‍👦</div>
-      <div class="plan-name">Plan Familiar</div>
-      <p class="plan-target">Para familias de 2 a 6 personas</p>
+      <div class="plan-name-badge badge-celeste">Plan Celeste Plus</div>
+      <div class="plan-name">Plan Celeste Plus</div>
+      <p class="plan-target">El equilibrio perfecto entre cobertura y precio</p>
       <ul class="plan-features">
-        <li><span>✓</span> Todo lo del plan individual</li>
-        <li><span>✓</span> Cobertura para hijos hasta 25 años</li>
-        <li><span>✓</span> Maternidad y pediatría</li>
-        <li><span>✓</span> Descuentos por grupo familiar</li>
+        <li><span>✓</span> Acceso a red completa de especialistas</li>
+        <li><span>✓</span> Hospitalización y cirugías</li>
+        <li><span>✓</span> Clínica BlueCare con atención preferencial</li>
+        <li><span>✓</span> Teleconsulta 24/7</li>
+        <li><span>✓</span> Seguro de desempleo hasta 9 meses</li>
       </ul>
-      <a href="https://wa.me/573160277642" class="plan-cta">Cotizar este plan</a>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Celeste%20Plus%20de%20MedPlus" class="plan-cta">Cotizar Plan Celeste Plus</a>
     </div>
-
     <div class="plan-card">
-      <div class="plan-icon">🏢</div>
-      <div class="plan-name">Plan Empresarial</div>
-      <p class="plan-target">Para empresas y equipos de trabajo</p>
+      <div class="plan-name-badge badge-turquesa">Plan Turquesa Plus</div>
+      <div class="plan-name">Plan Turquesa Plus</div>
+      <p class="plan-target">Excelente cobertura con gran accesibilidad</p>
       <ul class="plan-features">
-        <li><span>✓</span> Cobertura colectiva flexible</li>
-        <li><span>✓</span> Gestión centralizada</li>
-        <li><span>✓</span> Tarifas preferenciales por volumen</li>
-        <li><span>✓</span> Reporte de uso para RRHH</li>
+        <li><span>✓</span> Medicina general y especialistas clave</li>
+        <li><span>✓</span> Urgencias y hospitalización</li>
+        <li><span>✓</span> Teleconsulta incluida</li>
+        <li><span>✓</span> Cobertura nacional completa</li>
+        <li><span>✓</span> Seguro de desempleo hasta 9 meses</li>
       </ul>
-      <a href="https://wa.me/573160277642" class="plan-cta">Cotizar este plan</a>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Turquesa%20Plus%20de%20MedPlus" class="plan-cta">Cotizar Plan Turquesa Plus</a>
     </div>
   </div>
+
+  <!-- EXCELSOS -->
+  <div class="planes-content" id="plan-excelsos">
+    <div class="plan-card">
+      <div class="plan-name-badge badge-pergamino">Plan Pergamino Plus</div>
+      <div class="plan-name">Plan Pergamino Plus</div>
+      <p class="plan-target">Para familias que buscan cobertura premium</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Cobertura familiar amplia</li>
+        <li><span>✓</span> Especialistas sin restricciones</li>
+        <li><span>✓</span> Hospitalización completa</li>
+        <li><span>✓</span> Programas preventivos personalizados</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Pergamino%20Plus%20de%20MedPlus" class="plan-cta">Cotizar Plan Pergamino</a>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-name-badge badge-cafe-excelso">Plan Café Excelso</div>
+      <div class="plan-name">Plan Café Excelso</div>
+      <p class="plan-target">El más popular de la línea Excelsos</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Amplia red de especialistas</li>
+        <li><span>✓</span> Urgencias y hospitalización</li>
+        <li><span>✓</span> Más de 10 rutas preventivas</li>
+        <li><span>✓</span> Teleconsulta 24/7</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Café%20Excelso%20de%20MedPlus" class="plan-cta">Cotizar Plan Café Excelso</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name-badge badge-cereza">Plan Cereza Excelso Plus</div>
+      <div class="plan-name">Plan Cereza Excelso Plus</div>
+      <p class="plan-target">Entrada a los planes Excelsos con gran valor</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Medicina general y especialidades básicas</li>
+        <li><span>✓</span> Urgencias cubiertas</li>
+        <li><span>✓</span> Laboratorio clínico</li>
+        <li><span>✓</span> Acceso a clínicas BlueCare</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Cereza%20Excelso%20de%20MedPlus" class="plan-cta">Cotizar Plan Cereza</a>
+    </div>
+  </div>
+
+  <!-- LIGHT -->
+  <div class="planes-content" id="plan-light">
+    <div class="plan-card">
+      <div class="plan-name-badge badge-cafe-express">Plan Café Express</div>
+      <div class="plan-name">Plan Café Express</div>
+      <p class="plan-target">Acceso rápido y eficiente a atención médica</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Consultas de medicina general</li>
+        <li><span>✓</span> Urgencias cubiertas</li>
+        <li><span>✓</span> Teleconsulta disponible</li>
+        <li><span>✓</span> Excelente relación precio-cobertura</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Café%20Express%20de%20MedPlus" class="plan-cta">Cotizar Plan Café Express</a>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-name-badge badge-selecto">Plan Selecto Joven</div>
+      <div class="plan-name">Plan Selecto Joven</div>
+      <p class="plan-target">Ideal para jóvenes y personas activas</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Medicina general y especialistas seleccionados</li>
+        <li><span>✓</span> Urgencias y hospitalización</li>
+        <li><span>✓</span> Programas preventivos</li>
+        <li><span>✓</span> Teleconsulta 24/7</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Selecto%20Joven%20de%20MedPlus" class="plan-cta">Cotizar Plan Selecto Joven</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name-badge badge-salud">Plan Salud Plus</div>
+      <div class="plan-name">Plan Salud Plus</div>
+      <p class="plan-target">Cobertura esencial con el respaldo de MedPlus</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Consultas médicas cubiertas</li>
+        <li><span>✓</span> Laboratorio básico</li>
+        <li><span>✓</span> Urgencias cubiertas</li>
+        <li><span>✓</span> Acceso a red MedPlus</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Salud%20Plus%20de%20MedPlus" class="plan-cta">Cotizar Plan Salud Plus</a>
+    </div>
+  </div>
+
+  <!-- AMD -->
+  <div class="planes-content" id="plan-amd">
+    <div class="plan-card">
+      <div class="plan-name-badge badge-amd-plus">AMD Plus</div>
+      <div class="plan-name">AMD Plus</div>
+      <p class="plan-target">Para empresas que quieren lo mejor para su equipo</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Cobertura colectiva completa</li>
+        <li><span>✓</span> Asesor empresarial dedicado</li>
+        <li><span>✓</span> Tarifas preferenciales por volumen</li>
+        <li><span>✓</span> Reportes de uso para RRHH</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20AMD%20Plus%20para%20mi%20empresa" class="plan-cta">Cotizar AMD Plus</a>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-name-badge badge-amd-integral">AMD Integral</div>
+      <div class="plan-name">AMD Integral</div>
+      <p class="plan-target">El más completo para empresas medianas y grandes</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Todo lo de AMD Plus</li>
+        <li><span>✓</span> Chequeo médico ejecutivo incluido</li>
+        <li><span>✓</span> Programas de bienestar corporativo</li>
+        <li><span>✓</span> Gestión centralizada de afiliados</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20AMD%20Integral%20para%20mi%20empresa" class="plan-cta">Cotizar AMD Integral</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name-badge badge-amd-express">AMD Express / Modular</div>
+      <div class="plan-name">AMD Express / Modular</div>
+      <p class="plan-target">Flexible y adaptable a las necesidades de tu empresa</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Módulos de cobertura seleccionables</li>
+        <li><span>✓</span> Ideal para empresas pequeñas</li>
+        <li><span>✓</span> Fácil gestión de incorporaciones</li>
+        <li><span>✓</span> Soporte empresarial continuo</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20un%20Plan%20AMD%20para%20mi%20empresa" class="plan-cta">Cotizar AMD Express</a>
+    </div>
+  </div>
+
+
+  <!-- AZUL PLUS -->
+  <div class="planes-content" id="plan-azulplus">
+    <div class="plan-card">
+      <div class="plan-name-badge" style="background:#1a6fa8;">Plan Básico</div>
+      <div class="plan-name">Azul Plus Básico</div>
+      <p class="plan-target">Entrada accesible a la red MedPlus para personas y familias</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Medicina general y especialistas básicos</li>
+        <li><span>✓</span> Urgencias cubiertas</li>
+        <li><span>✓</span> Teleconsulta disponible</li>
+        <li><span>✓</span> Acceso a red MedPlus</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Azul%20Plus%20Básico%20de%20MedPlus" class="plan-cta">Cotizar Plan Básico</a>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-name-badge" style="background:#1464b4;">Plan Modular</div>
+      <div class="plan-name">Azul Plus Modular</div>
+      <p class="plan-target">Arma tu plan según tus necesidades específicas</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Módulos de cobertura seleccionables</li>
+        <li><span>✓</span> Hospitalización incluida</li>
+        <li><span>✓</span> Urgencias 24/7</li>
+        <li><span>✓</span> Teleconsulta y medicina general</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Azul%20Plus%20Modular%20de%20MedPlus" class="plan-cta">Cotizar Plan Modular</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name-badge" style="background:#0d3f73;">Plan Avanzado</div>
+      <div class="plan-name">Azul Plus Avanzado</div>
+      <p class="plan-target">Cobertura amplia para quienes quieren más protección</p>
+      <ul class="plan-features">
+        <li><span>✓</span> Todos los especialistas incluidos</li>
+        <li><span>✓</span> Hospitalización y cirugías</li>
+        <li><span>✓</span> Urgencias y teleconsulta 24/7</li>
+        <li><span>✓</span> Cobertura nacional completa</li>
+      </ul>
+      <a href="https://wa.me/573160277642?text=Hola,%20me%20interesa%20el%20Plan%20Azul%20Plus%20Avanzado%20de%20MedPlus" class="plan-cta">Cotizar Plan Avanzado</a>
+    </div>
+  </div>
+
+  <p class="planes-nota">Los precios varían según edad, número de beneficiarios y cobertura. <a href="https://wa.me/573160277642">Pide tu cotización personalizada</a> — es gratis y sin compromiso.<br>
+  <a href="https://medplus.com.co/wp-content/uploads/2025/09/terminos_y_condiciones_planes_azules.pdf" target="_blank" style="font-size:0.8rem;color:var(--texto-suave);">📄 Términos y condiciones Planes Azules</a> &nbsp;·&nbsp;
+  <a href="https://medplus.com.co/wp-content/uploads/2025/09/terminos_y_condiciones_medplus.pdf" target="_blank" style="font-size:0.8rem;color:var(--texto-suave);">📄 Términos y condiciones generales MedPlus</a>
+  </p>
 </section>
 
 <div class="divider"></div>
 
+<!-- QUIZ -->
+<section id="quiz" style="padding:5rem 2rem;">
+  <div class="quiz-section">
+    <div class="section-label">Encuentra tu plan ideal</div>
+    <h2>¿No sabes cuál plan<br>es <em>para ti?</em></h2>
+    <p class="section-sub">Responde 3 preguntas rápidas y te decimos cuál plan MedPlus se adapta mejor a tu situación.</p>
+
+    <div class="quiz-wrapper">
+      <!-- Paso 1 -->
+      <div class="quiz-step active" id="qstep-1">
+        <div class="quiz-question">¿Para quién buscas el plan?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'q1', 'individual')">
+            <span class="quiz-option-icon">👤</span>
+            <span class="quiz-option-text">Solo para mí</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'q1', 'familia')">
+            <span class="quiz-option-icon">👨‍👩‍👧‍👦</span>
+            <span class="quiz-option-text">Para mí y mi familia</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'q1', 'empresa')">
+            <span class="quiz-option-icon">🏢</span>
+            <span class="quiz-option-text">Para mi empresa o empleados</span>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn quiz-btn-primary" onclick="nextStep(2)">Siguiente →</button>
+          <div class="quiz-progress">
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot"></div>
+            <div class="quiz-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div class="quiz-step" id="qstep-2">
+        <div class="quiz-question">¿Qué es lo más importante para ti en un plan?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'q2', 'cobertura')">
+            <span class="quiz-option-icon">🏥</span>
+            <span class="quiz-option-text">Máxima cobertura y especialistas</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'q2', 'precio')">
+            <span class="quiz-option-icon">💰</span>
+            <span class="quiz-option-text">El mejor precio posible</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'q2', 'equilibrio')">
+            <span class="quiz-option-icon">⚖️</span>
+            <span class="quiz-option-text">Equilibrio entre precio y cobertura</span>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn quiz-btn-secondary" onclick="prevStep(1)">← Atrás</button>
+          <button class="quiz-btn quiz-btn-primary" onclick="nextStep(3)">Siguiente →</button>
+          <div class="quiz-progress">
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 3 -->
+      <div class="quiz-step" id="qstep-3">
+        <div class="quiz-question">¿Con qué frecuencia usas el médico?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'q3', 'mucho')">
+            <span class="quiz-option-icon">🔄</span>
+            <span class="quiz-option-text">Con frecuencia — tengo condiciones o controles periódicos</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'q3', 'regular')">
+            <span class="quiz-option-icon">📅</span>
+            <span class="quiz-option-text">Ocasionalmente — consultas de rutina</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'q3', 'poco')">
+            <span class="quiz-option-icon">🌿</span>
+            <span class="quiz-option-text">Poco — soy joven y sano, quiero respaldo por si acaso</span>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-btn quiz-btn-secondary" onclick="prevStep(2)">← Atrás</button>
+          <button class="quiz-btn quiz-btn-primary" onclick="showResult()">Ver mi plan ideal ✨</button>
+          <div class="quiz-progress">
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot active"></div>
+            <div class="quiz-dot active"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resultado -->
+      <div class="quiz-result" id="quiz-result">
+        <div class="quiz-question" style="color:var(--dorado-claro);">🎯 Tu plan recomendado es...</div>
+        <div class="result-card">
+          <div class="result-plan-name" id="result-name">Plan Celeste Plus</div>
+          <p class="result-desc" id="result-desc">Basado en tus respuestas, el Plan Celeste Plus de MedPlus es el que mejor se adapta a ti.</p>
+          <a href="#" class="result-btn" id="result-btn">📲 Cotizar este plan por WhatsApp</a>
+        </div>
+        <button class="quiz-btn quiz-btn-secondary" style="margin-top:1rem;" onclick="restartQuiz()">Volver a empezar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- NOSOTROS -->
-<section id="nosotros" style="padding: 6rem 4rem;">
+<section id="nosotros">
   <div class="nosotros">
     <div class="nosotros-visual">
       <div class="nosotros-img-placeholder">🌿</div>
       <div class="nosotros-stat">
-        <div class="nosotros-stat-num">9</div>
+        <div class="nosotros-stat-num">9+</div>
         <div class="nosotros-stat-label">años cuidando<br>tu salud</div>
       </div>
     </div>
-    <div class="nosotros-content">
+    <div>
       <div class="section-label">Quiénes somos</div>
-      <h2>Una persona,<br><em>un compromiso</em> real</h2>
-      <p style="color: var(--texto-suave); font-size: 1rem; line-height: 1.7; margin: 1.5rem 0; font-weight: 300;">
-        En Vitalplus Salud y Seguros no somos un call center ni una empresa impersonal. Somos una asesora dedicada con más de 9 años de experiencia en el sector salud, que se toma el tiempo de entender tu situación antes de recomendarte cualquier plan.
+      <h2>Una asesora,<br><em>un compromiso</em> real</h2>
+      <p style="color:var(--texto-suave);font-size:1rem;line-height:1.7;margin:1.5rem 0;font-weight:300;">
+        En Vitalplus no somos un call center ni una empresa impersonal. Somos una asesora dedicada con más de 9 años en el sector salud, que se toma el tiempo de entender tu situación antes de recomendarte cualquier plan.
       </p>
-      <p style="color: var(--texto-suave); font-size: 1rem; line-height: 1.7; margin-bottom: 2rem; font-weight: 300;">
+      <p style="color:var(--texto-suave);font-size:1rem;line-height:1.7;margin-bottom:2rem;font-weight:300;">
         Nuestra relación no termina con la venta. Estamos aquí para resolver tus dudas, ayudarte a usar tu plan y acompañarte cuando más lo necesitas.
       </p>
       <div class="valores-grid">
@@ -1101,59 +886,47 @@
 <!-- TESTIMONIOS -->
 <div class="testimonios" id="testimonios">
   <div class="section-label">Lo que dicen nuestros clientes</div>
-  <h2>Historias reales de <em>familias felices</em></h2>
+  <h2>Historias reales de <em>familias tranquilas</em></h2>
   <p class="section-sub">Más de 500 familias confían en Vitalplus. Estas son algunas de sus experiencias.</p>
-
   <div class="testimonios-grid">
     <div class="testimonio-card">
       <div class="stars">★★★★★</div>
-      <p class="testimonio-text">"Me explicó cada detalle del plan con paciencia. Nunca sentí que me estaban vendiendo, sino que me estaban asesorando de verdad. Mi familia lleva 2 años con MedPlus y estamos felices."</p>
+      <p class="testimonio-text">"Me explicó cada plan con paciencia y honestidad. Nunca sentí que me estaban vendiendo algo — me asesoraron de verdad. Llevamos 2 años con MedPlus y estamos felices."</p>
       <div class="testimonio-author">
-        <div class="author-avatar" style="background: var(--verde);">MC</div>
-        <div>
-          <div class="author-name">María C.</div>
-          <div class="author-desc">Mamá de 3 hijos, Bogotá</div>
-        </div>
+        <div class="author-avatar" style="background:var(--verde);">MC</div>
+        <div><div class="author-name">María C.</div><div class="author-desc">Mamá de 3 hijos · Bogotá</div></div>
       </div>
     </div>
-
     <div class="testimonio-card">
       <div class="stars">★★★★★</div>
-      <p class="testimonio-text">"Tenía muchas dudas sobre medicina prepagada y cuánto costaba. Me ayudó a entender todo y encontré un plan que se ajustaba perfecto a mi presupuesto como independiente."</p>
+      <p class="testimonio-text">"Tenía mil dudas sobre medicina prepagada. Me ayudó a entender todo y encontré el Plan Selecto Plus que se ajustaba perfecto a mi presupuesto como independiente."</p>
       <div class="testimonio-author">
-        <div class="author-avatar" style="background: var(--dorado);">JR</div>
-        <div>
-          <div class="author-name">Julián R.</div>
-          <div class="author-desc">Freelancer, Medellín</div>
-        </div>
+        <div class="author-avatar" style="background:var(--dorado);">JR</div>
+        <div><div class="author-name">Julián R.</div><div class="author-desc">Freelancer · Medellín</div></div>
       </div>
     </div>
-
     <div class="testimonio-card">
       <div class="stars">★★★★★</div>
-      <p class="testimonio-text">"Contraté el plan para todos mis empleados. El proceso fue muy ágil y el precio para el grupo fue excelente. Lo recomiendo para cualquier empresa pequeña."</p>
+      <p class="testimonio-text">"Contraté el Plan AMD para mis 12 empleados. El proceso fue rapidísimo, el precio por grupo fue excelente y el respaldo ha sido increíble. Totalmente recomendado."</p>
       <div class="testimonio-author">
-        <div class="author-avatar" style="background: #3d7a5f;">AP</div>
-        <div>
-          <div class="author-name">Adriana P.</div>
-          <div class="author-desc">Empresaria, Cali</div>
-        </div>
+        <div class="author-avatar" style="background:#3d7a5f;">AP</div>
+        <div><div class="author-name">Adriana P.</div><div class="author-desc">Empresaria · Cali</div></div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- CTA FINAL -->
-<section style="padding: 5rem 2rem;">
+<section style="padding:5rem 2rem;">
   <div class="cta-final">
-    <div class="section-label" style="color: var(--dorado-claro); justify-content: center;">
+    <div class="section-label" style="color:var(--dorado-claro);justify-content:center;">
       <span style="display:block;width:24px;height:2px;background:var(--dorado)"></span>
       Empieza hoy
     </div>
     <h2>¿Listo para proteger<br>lo que <em>más te importa?</em></h2>
     <p>Una conversación de 10 minutos puede cambiarte la vida. Sin compromisos, sin costo, sin presión.</p>
     <div class="cta-buttons">
-      <a href="https://wa.me/573160277642" class="btn-white">📲 Escribir por WhatsApp</a>
+      <a href="https://wa.me/573160277642?text=Hola,%20quiero%20asesoría%20gratuita%20para%20un%20plan%20MedPlus" class="btn-white">📲 Escribir por WhatsApp</a>
       <a href="tel:+573160277642" class="btn-outline-white">📞 Llamar ahora</a>
     </div>
   </div>
@@ -1162,30 +935,38 @@
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="footer-logo">Vitalplus <span>Salud</span></div>
-    <p class="footer-desc">Corredora autorizada de medicina prepagada MedPlus. Asesoría personalizada para personas, familias y empresas en toda Colombia.</p>
+    <div class="footer-logo"><img src="data:image/png;base64,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" alt="Logo" style="width:36px;height:36px;border-radius:50%;vertical-align:middle;margin-right:8px;"><span style="color:var(--azul)">Vital</span><span style="color:var(--verde)">plus</span> <span style="font-weight:400;font-size:1.1rem;color:var(--texto-suave)">Salud</span></div>
+    <p class="footer-desc">Corredora autorizada de medicina prepagada MedPlus. Asesoría personalizada y gratuita para personas, familias y empresas en toda Colombia.</p>
+    <div style="margin-bottom:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;"><span class="medplus-badge">✓ Corredora autorizada MedPlus</span></div>
+    <div style="margin-bottom:1rem;"><a href="https://www.supersalud.gov.co/" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--texto-suave);text-decoration:none;">🏛️ Vigilado Supersalud</a></div>
     <div class="footer-social">
-      <a href="https://www.facebook.com/profile.php?id=61572511583555" class="social-link">f</a>
-      <a href="https://www.instagram.com/vitalpsaludyseguros/" class="social-link">📷</a>
-      <a href="https://wa.me/573160277642" class="social-link">💬</a>
+      <a href="https://www.facebook.com/profile.php?id=61572511583555" class="social-link" title="Facebook" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/vitalpsaludyseguros/" class="social-link" title="Instagram" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://wa.me/573160277642" class="social-link" title="WhatsApp" aria-label="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
     </div>
   </div>
   <div class="footer-col">
-    <h4>Planes</h4>
+    <h4>Planes MedPlus</h4>
     <ul>
-      <li><a href="#">Plan Individual</a></li>
-      <li><a href="#">Plan Familiar</a></li>
-      <li><a href="#">Plan Empresarial</a></li>
-      <li><a href="#">¿Cuál es para mí?</a></li>
+      <li><a href="#planes" onclick="showPlanes('azules')">Planes Azules</a></li>
+      <li><a href="#planes" onclick="showPlanes('excelsos')">Planes Excelsos</a></li>
+      <li><a href="#planes" onclick="showPlanes('light')">Planes Light</a></li>
+      <li><a href="#planes" onclick="showPlanes('amd')">Planes AMD</a></li>
     </ul>
   </div>
   <div class="footer-col">
     <h4>Empresa</h4>
     <ul>
-      <li><a href="#">Quiénes somos</a></li>
-      <li><a href="#">Testimonios</a></li>
-      <li><a href="#">Blog de salud</a></li>
-      <li><a href="#">Preguntas frecuentes</a></li>
+      <li><a href="#nosotros">Quiénes somos</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#quiz">¿Cuál plan es para mí?</a></li>
+      <li><a href="https://medplus.com.co/planes-de-medicina-prepagada/" target="_blank">Ver planes en MedPlus →</a></li>
     </ul>
   </div>
   <div class="footer-col">
@@ -1193,6 +974,7 @@
     <ul>
       <li><a href="tel:+573160277642">+57 316 027-7642</a></li>
       <li><a href="tel:+573134032142">+57 313 403-2142</a></li>
+      <li><a href="tel:+573002628102">+57 300 262-8102</a></li>
       <li><a href="https://wa.me/573160277642">WhatsApp</a></li>
       <li><a href="#">Lun–Vie, 9am–5pm</a></li>
     </ul>
@@ -1204,8 +986,90 @@
   <span>Corredora autorizada MedPlus Salud · Colombia</span>
 </div>
 
-<!-- WhatsApp flotante -->
-<a href="https://wa.me/573160277642" class="whatsapp-float" title="Escríbenos por WhatsApp">💬</a>
+<a href="https://wa.me/573160277642?text=Hola,%20quiero%20asesoría%20para%20un%20plan%20MedPlus" class="whatsapp-float" title="Escríbenos por WhatsApp">💬</a>
 
+<script>
+  // ── MENÚ MÓVIL ──
+  function toggleMenu(btn) {
+    btn.classList.toggle('open');
+    document.getElementById('nav-mobile').classList.toggle('open');
+  }
+  function closeMobileMenu() {
+    document.querySelector('.nav-hamburger').classList.remove('open');
+    document.getElementById('nav-mobile').classList.remove('open');
+  }
+
+  // ── PLANES TABS ──
+  function showPlanes(familia, btn) {
+    document.querySelectorAll('.planes-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('plan-' + familia).classList.add('active');
+    if (btn) btn.classList.add('active');
+    else {
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        if (el.getAttribute('onclick') && el.getAttribute('onclick').includes(familia)) el.classList.add('active');
+      });
+    }
+  }
+
+  // ── QUIZ ──
+  const answers = {};
+
+  function selectOption(el, question, value) {
+    el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    answers[question] = value;
+  }
+
+  function nextStep(step) {
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    const next = document.getElementById('qstep-' + step);
+    if (next) next.classList.add('active');
+  }
+
+  function prevStep(step) {
+    nextStep(step);
+  }
+
+  function showResult() {
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('quiz-result').classList.add('active');
+
+    const quien = answers.q1 || 'individual';
+    const prioridad = answers.q2 || 'equilibrio';
+    const frecuencia = answers.q3 || 'regular';
+
+    let plan, desc, waMsg;
+
+    if (quien === 'empresa') {
+      plan = 'Plan AMD Integral';
+      desc = 'Para empresas, el Plan AMD Integral de MedPlus ofrece cobertura colectiva completa, asesor empresarial dedicado y gestión centralizada. Ideal para equipos de cualquier tamaño.';
+      waMsg = 'Hola, hice el quiz y me recomendaron el Plan AMD Integral para mi empresa. ¿Me pueden dar más información?';
+    } else if (prioridad === 'cobertura' || frecuencia === 'mucho') {
+      plan = 'Plan Índigo Plus';
+      desc = 'Dado que buscas máxima cobertura, el Plan Índigo Plus es el más completo de MedPlus. Incluye todos los especialistas, hospitalización sin límite, cobertura en el exterior y seguro de desempleo.';
+      waMsg = 'Hola, hice el quiz y me recomendaron el Plan Índigo Plus. ¿Me pueden dar más información y cotización?';
+    } else if (prioridad === 'precio' || frecuencia === 'poco') {
+      plan = 'Plan Selecto Plus';
+      desc = 'Para alguien que usa poco el médico pero quiere respaldo confiable, el Plan Selecto Plus de la línea Light ofrece excelente cobertura a un precio muy accesible. Perfecto para jóvenes y personas activas.';
+      waMsg = 'Hola, hice el quiz y me recomendaron el Plan Selecto Plus. ¿Me pueden dar más información y cotización?';
+    } else {
+      plan = 'Plan Celeste Plus';
+      desc = 'El Plan Celeste Plus es el equilibrio perfecto entre cobertura y precio. Acceso a toda la red de especialistas MedPlus, clínica BlueCare, teleconsulta 24/7 y seguro de desempleo incluido.';
+      waMsg = 'Hola, hice el quiz y me recomendaron el Plan Celeste Plus. ¿Me pueden dar más información y cotización?';
+    }
+
+    document.getElementById('result-name').textContent = plan;
+    document.getElementById('result-desc').textContent = desc;
+    document.getElementById('result-btn').href = 'https://wa.me/573160277642?text=' + encodeURIComponent(waMsg);
+  }
+
+  function restartQuiz() {
+    document.getElementById('quiz-result').classList.remove('active');
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    Object.keys(answers).forEach(k => delete answers[k]);
+    nextStep(1);
+  }
+</script>
 </body>
 </html>
